@@ -14,8 +14,6 @@ namespace Estately.ViewModels
         public new string Title { get; set; }
         public string Description { get; set; }
 
-        private FirebaseDB services;
-
         private ObservableCollection<Listing> _listing = new ObservableCollection<Listing>();
         public ObservableCollection<Listing> Listings
         {

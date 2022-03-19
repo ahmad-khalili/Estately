@@ -6,6 +6,7 @@ using System.Text;
 using Estately.Models;
 using Firebase.Database.Query;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Estately.Services
 {
@@ -31,6 +32,20 @@ namespace Estately.Services
         {
             Listing listing = new Listing() { Title = title, Description = description };
             await client.Child("Listings").PostAsync(listing);
+        }
+
+        public async Task UpdateListing(string title, string description)
+        {
+            var toUpdateListing = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).FirstOrDefault
+                (a => a.Object.Title == title && a.Object.Description == description);
+
+            Listing listing = new Listing() { Title = title, Description = description };
+            await client
+                .Child("Listings")
+                .Child(toUpdateListing.Key)
+                .PutAsync(listing);
         }
     }
 }
