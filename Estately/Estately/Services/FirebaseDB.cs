@@ -1,4 +1,4 @@
-﻿using Firebase.Database;
+using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +25,12 @@ namespace Estately.Services
                 .AsObservable<Listing>()
                 .AsObservableCollection();
             return listingData;
+        }
+        
+        public async Task AddListing(string title, string description)
+        {
+            Listing listing = new Listing() { Title = title, Description = description };
+            await client.Child("Listings").PostAsync(listing);
         }
     }
 }
