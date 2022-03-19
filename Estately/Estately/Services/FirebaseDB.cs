@@ -7,7 +7,7 @@ using Estately.Models;
 using Firebase.Database.Query;
 using System.Threading.Tasks;
 
-namespace App3.Services
+namespace Estately.Services
 {
     public class FirebaseDB
     {
