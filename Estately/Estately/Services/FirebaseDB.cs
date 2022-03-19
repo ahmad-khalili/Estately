@@ -47,5 +47,14 @@ namespace Estately.Services
                 .Child(toUpdateListing.Key)
                 .PutAsync(listing);
         }
+
+        public async Task DeleteListing(string title, string description)
+        {
+            var toDeleteListing = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).FirstOrDefault
+                (a => a.Object.Title == title && a.Object.Description == description);
+            await client.Child("Listings").Child(toDeleteListing.Key).DeleteAsync();
+        }
     }
 }
