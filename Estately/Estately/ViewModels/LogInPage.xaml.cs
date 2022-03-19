@@ -11,14 +11,9 @@ using Xamarin.Forms;
 
 namespace Auth
 {
-    public partial class MainPage : ContentPage
+    public partial class LogInPage : ContentPage
     {
         public string WebAPIkey = "AIzaSyDQDD2D9NbLAKCUTvnqcxbArU0UfuQF0u8";
-
-        public MainPage()
-        {
-            InitializeComponent();
-        }
 
         async void signupbutton_Clicked(Object sender, EventArgs e)
         {
