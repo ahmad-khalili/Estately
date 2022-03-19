@@ -15,11 +15,6 @@ namespace Auth
     {
         public string WebAPIkey = "AIzaSyDQDD2D9NbLAKCUTvnqcxbArU0UfuQF0u8";
 
-        public SignupPage()
-        {
-            InitializeComponent();
-        }
-
         async void signupbutton_Clicked(Object sender, EventArgs e)
         {
             try
