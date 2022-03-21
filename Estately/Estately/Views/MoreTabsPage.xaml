@@ -1,13 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Estately.Views.MoreTabsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="MoreTabsPage"
-                   BackgroundColor="Gray"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:local="clr-namespace:Estately.Models"
+             xmlns:local1="clr-namespace:Estately.Views"
+             x:Class="Estately.Views.MoreTabsPage"
+             Title="More">
+    <StackLayout>
+        <ListView x:Name="listView" x:FieldModifier="public">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="Profile" TargetType="{x:Type local1:ProfilePage}" />
+                    <local:FlyoutPageItem Title="Digital Contract Creator" TargetType="{x:Type local1:ContractPage}" />
+                    <local:FlyoutPageItem Title="Mortgage Calculator" TargetType="{x:Type local1:MortgagePage}" />
+                    <local:FlyoutPageItem Title="Renovation Calculator" TargetType="{x:Type local1:RennovationPage}" />
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

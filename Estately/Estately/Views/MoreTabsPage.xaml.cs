@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Estately.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MoreTabsPage : ContentPage
     {
         public MoreTabsPage()

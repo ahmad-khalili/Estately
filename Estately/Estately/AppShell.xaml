@@ -30,11 +30,11 @@
     </Shell.Resources>
 
     <TabBar>
-       <ShellContent Route="MarketPlace"ContentTemplate="{DataTemplate local:MarketPlace}" />
-       <ShellContent Route="Notifications"ContentTemplate="{DataTemplate local:Notifications}" />
-       <ShellContent Route="Chat"ContentTemplate="{DataTemplate local:Chat}" />
-       <ShellContent Route="AgentFinder"ContentTemplate="{DataTemplate local:AgentFinder}" />
-       <ShellContent Route="More" ContentTemplate="{DataTemplate local:MoreTabsPage}" />
+        <ShellContent Title="Marketplace" Route="MarketplacePage" ContentTemplate="{DataTemplate local:MarketplacePage}" />
+        <ShellContent Title="Agent Finder" Route="AgentFinderPage" ContentTemplate="{DataTemplate local:AgentFinderPage}" />
+        <ShellContent Title="Messages" Route="MessagesPage" ContentTemplate="{DataTemplate local:MessagesPage}" />
+        <ShellContent Title="Notifications" Route="NotificationsPage" ContentTemplate="{DataTemplate local:NotificationsPage}" />
+        <ShellContent Title="More" Route="MoreTabsPage" ContentTemplate="{DataTemplate local:MoreTabsPage}" />
     </TabBar>
 
 </Shell>

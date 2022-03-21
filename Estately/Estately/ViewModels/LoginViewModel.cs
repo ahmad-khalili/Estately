@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace Auth
+namespace Estately
 {
-    public partial class LogInPage : ContentPage
+    public class LoginViewModel
     {
         public string WebAPIkey = "AIzaSyDQDD2D9NbLAKCUTvnqcxbArU0UfuQF0u8";
 
-        async void signupbutton_Clicked(Object sender, EventArgs e)
+        /*async void signupbutton_Clicked(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignupPage());
-        }
+        }*/
 
-        async void loginbutton_Clicked(Object sender, EventArgs e)
+        /*async void loginbutton_Clicked(Object sender, EventArgs e)
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
             try
@@ -29,12 +29,10 @@ namespace Auth
                 var content = await auth.GetFreshAuthAsync();
                 var serializedcontnet = JsonConvert.SerializeObject(content);
                 Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
-                await Navigation.PushAsync(new MyDashboardPage());
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Alert", "Invalid useremail or password", "OK");
-            }
-        }
+                await App.Current.MainPage.DisplayAlert("Alert", ex.Message,"Invalid useremail or password", "OK");
+            }*/
     }
 }
