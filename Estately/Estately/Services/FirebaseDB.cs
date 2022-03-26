@@ -23,38 +23,61 @@ namespace Estately.Services
         {
             var listingData = client
                 .Child("Listings")
-                .AsObservable<Listing>()
+                .AsObservable<Listing>()    
                 .AsObservableCollection();
+
             return listingData;
         }
         
-        public async Task AddListing(string title, string description)
+        public async Task AddListing(Listing listing)
         {
-            Listing listing = new Listing() { Title = title, Description = description };
             await client.Child("Listings").PostAsync(listing);
         }
 
-        public async Task UpdateListing(string title, string description)
+        public async Task UpdateListing(Listing listing)
         {
             var toUpdateListing = (await client
                 .Child("Listings")
                 .OnceAsync<Listing>()).FirstOrDefault
-                (a => a.Object.Title == title && a.Object.Description == description);
+                (a => a.Object.Title == listing.Title && a.Object.Description == listing.Description);
 
-            Listing listing = new Listing() { Title = title, Description = description };
+            Listing updatedListing = listing;
             await client
                 .Child("Listings")
                 .Child(toUpdateListing.Key)
-                .PutAsync(listing);
+                .PutAsync(updatedListing);
         }
 
-        public async Task DeleteListing(string title, string description)
+        public async Task DeleteListing(Listing listing)
         {
             var toDeleteListing = (await client
                 .Child("Listings")
                 .OnceAsync<Listing>()).FirstOrDefault
-                (a => a.Object.Title == title && a.Object.Description == description);
+                (a => a.Object.Title == listing.Title && a.Object.Description == listing.Description);
             await client.Child("Listings").Child(toDeleteListing.Key).DeleteAsync();
+        }
+
+        public async Task<List<Listing>> FilterListing(float startPrice, float endPrice, float startSize, float endSize, string location)
+        {
+            var toFilter = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).Select(item => new Listing
+                {
+                    Title = item.Object.Title,
+                    Description = item.Object.Description,
+                    Price = item.Object.Price,
+                    Size = item.Object.Size,
+                    Location = item.Object.Location
+                }).ToList();
+            List<Listing> items = new List<Listing>();
+            foreach (var item in toFilter)
+            {
+                if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize && item.Location.Equals(location))
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
         }
     }
 }

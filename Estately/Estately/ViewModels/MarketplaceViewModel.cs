@@ -11,6 +11,7 @@ namespace Estately.ViewModels
 {
     public class MarketplaceViewModel : BaseViewModel
     {
+        FirebaseDB services;
         public new string Title { get; set; }
         public string Description { get; set; }
 
@@ -23,6 +24,12 @@ namespace Estately.ViewModels
                 _listing = value;
                 OnPropertyChanged();
             }
+        }
+
+        public MarketplaceViewModel()
+        {
+            services = new FirebaseDB();
+            Listings = services.getListing();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Estately.Views
     {
         public MoreTabsPage()
         {
-            InitializeComponent();
+            InitializeComponent();        
         }
     }
 }
