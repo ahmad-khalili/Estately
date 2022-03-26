@@ -79,5 +79,65 @@ namespace Estately.Services
             }
             return items;
         }
+        
+        public async Task<List<Listing>> GetFeaturedProperties(string type)
+        {
+            var button = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).Select(item => new Listing()
+                {
+                    Title = item.Object.Title,
+                    Price = item.Object.Price,
+                    Type = item.Object.Type,
+                    Featured = item.Object.Featured,
+                    Location = item.Object.Location
+                });
+            List<Listing> items = new List<Listing>();
+            foreach (var item in button)
+            {
+                if(type == null)
+                {
+                    if (item.Featured.Equals("Yes"))
+                    {
+                        items.Add(item);
+                    }
+                }
+                if(item.Type.Equals(type) && item.Featured.Equals("Yes"))
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
+        }
+
+        public async Task<List<Listing>> GetNearbyProperties(string type)
+        {
+            var button = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).Select(item => new Listing()
+                {
+                    Title = item.Object.Title,
+                    Price = item.Object.Price,
+                    Type = item.Object.Type,
+                    Featured = item.Object.Featured,
+                    Location = item.Object.Location
+                });
+            List<Listing> items = new List<Listing>();
+            foreach (var item in button)
+            {
+                if (type == null)
+                {
+                    if (item.Featured.Equals("No"))
+                    {
+                        items.Add(item);
+                    }
+                }
+                if (item.Type.Equals(type) && item.Featured.Equals("No"))
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
+        }
     }
 }

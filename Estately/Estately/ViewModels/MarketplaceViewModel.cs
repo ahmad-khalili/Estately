@@ -14,6 +14,18 @@ namespace Estately.ViewModels
         FirebaseDB services;
         public new string Title { get; set; }
         public string Description { get; set; }
+        
+        public MarketplaceViewModel()
+        {
+            services = new FirebaseDB();
+            Listings = services.getListing();
+        }
+        
+        public new string Title { get; set; }
+        public string Description { get; set; }
+        public string Price { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
 
         private ObservableCollection<Listing> _listing = new ObservableCollection<Listing>();
         public ObservableCollection<Listing> Listings
@@ -25,11 +37,16 @@ namespace Estately.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        public MarketplaceViewModel()
+        
+        public async Task<List<Listing>> FeaturedListings(string type)
         {
-            services = new FirebaseDB();
-            Listings = services.getListing();
+            return await services.GetFeaturedProperties(type);
         }
+
+        public async Task<List<Listing>> NearbyListings(string type)
+        {
+            return await services.GetNearbyProperties(type);
+        }
+    
     }
 }
