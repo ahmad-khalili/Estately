@@ -72,9 +72,20 @@ namespace Estately.Services
             List<Listing> items = new List<Listing>();
             foreach (var item in toFilter)
             {
-                if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize && item.Location.Equals(location))
+                if (location == null)
                 {
-                    items.Add(item);
+                    if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize)
+                    {
+                        items.Add(item);
+                    }
+                }
+                else
+                {
+
+                    if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize && item.Location.Equals(location))
+                    {
+                        items.Add(item);
+                    }
                 }
             }
             return items;
