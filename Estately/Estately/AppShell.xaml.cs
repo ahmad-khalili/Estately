@@ -11,7 +11,7 @@ namespace Estately
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(FilterPage), typeof(FilterPage));
+            Routing.RegisterRoute(nameof(MarketplacePage), typeof(MarketplacePage));
             Routing.RegisterRoute(nameof(AgentFinderPage), typeof(AgentFinderPage));
             Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
             Routing.RegisterRoute(nameof(NotificationsPage), typeof(NotificationsPage));

@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:Estately.ViewModels"
-             x:DataType="viewmodels:MarketplaceViewModel"
              x:Class="Estately.Views.MarketplacePage"
              Title="Marketplace">
     <ContentPage.Content>
-        
         <Grid BackgroundColor="LightBlue" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -20,7 +17,7 @@
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
                 <SearchBar Placeholder="Search" Grid.Column="0"/>
-                <ImageButton Grid.Column="1" Margin="-20,0,5,0" Source="edit.png" ScaleY="0.6" ScaleX="0.7" BackgroundColor="LightBlue"/>
+                <Button Clicked="FilterButtonClicked" Grid.Column="1" Margin="-20,0,5,0" ScaleY="0.6" ScaleX="0.7" BackgroundColor="White"/>
             </Grid>
 
             <Grid Grid.Row="1" >
@@ -72,15 +69,15 @@
                                                            WidthRequest="200"
                                                            HorizontalOptions="Center" />
                                             </Frame>
-                                            <Label Text="{Binding Type}" x:Name="typeLabel" HorizontalOptions="End" Margin="5,20,10,150" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Type}" x:Name="TypeLabel" HorizontalOptions="End" Margin="5,20,10,150" FontAttributes="Bold"/>
                                             <Grid Grid.Row="1">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
                                                     <ColumnDefinition Width="auto"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Label Text="{Binding Title}" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Price}" Grid.Column="3" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Location}" Grid.Row="1" Grid.Column="0" FontSize="15"/>
+                                                <Label x:Name="TitleLabel" Text="{Binding Title}" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+                                                <Label x:Name="PriceLabel" Text="{Binding Price}" Grid.Column="3" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+                                                <Label x:Name="LocationLabel" Text="{Binding Location}" Grid.Row="1" Grid.Column="0" FontSize="15"/>
                                             </Grid>
                                         </Grid>
                                     </DataTemplate>
@@ -113,7 +110,7 @@
                                                            WidthRequest="200"
                                                            HorizontalOptions="Center" />
                                             </Frame>
-                                            <Label Text="{Binding Type}" x:Name="typeLabel" HorizontalOptions="End" Margin="5,20,10,150" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Type}" x:Name="TypeLabel" HorizontalOptions="End" Margin="5,20,10,150" FontAttributes="Bold"/>
                                             <Grid Grid.Row="1">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
@@ -132,6 +129,5 @@
                 </ScrollView>
             </Grid>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

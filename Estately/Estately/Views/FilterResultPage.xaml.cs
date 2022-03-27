@@ -20,18 +20,19 @@ namespace Estately.Views
         string location { get; set; }
         public FilterResultPage(float startPrice, float endPrice, float startSize, float endSize, string location)
         {
+            InitializeComponent();
             this.startPrice = startPrice;
             this.endPrice = endPrice;
             this.startSize = startSize;
             this.endSize = endSize;
             this.location = location;
-            InitializeComponent();
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             var filteredListings = await viewModel.filterListings(startPrice, endPrice, startSize, endSize, location);
             ListingsList.ItemsSource = filteredListings;
+
         }
     }
 }

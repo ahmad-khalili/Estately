@@ -1,13 +1,20 @@
-using Estately.ViewModels;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+using Estately.ViewModels;
 
 namespace Estately.Views
 {
     public partial class MarketplacePage : ContentPage
     {
         string type { get; set; }
-        
+
 
         MarketplaceViewModel marketplaceViewModel = new MarketplaceViewModel();
 
@@ -25,7 +32,7 @@ namespace Estately.Views
             featuredList.ItemsSource = featuredListings;
             nearbyList.ItemsSource = nearbyListings;
             type = null;
-           
+
         }
 
         public void AllButtonClicked(object sender, EventArgs eventArgs)
@@ -44,6 +51,9 @@ namespace Estately.Views
             type = "Rent";
             OnAppearing();
         }
-
+        public void FilterButtonClicked(object sender, EventArgs eventArgs)
+        {
+            Navigation.PushAsync(new FilterPage());
+        }
     }
 }

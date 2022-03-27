@@ -68,9 +68,9 @@ namespace Estately.Views
             Debug.WriteLine("RangeSliderOnDragStarted");
         }
 
-        private async void FilterButtonClicked(object sender, EventArgs eventArgs)
+        private void FilterButtonClicked(object sender, EventArgs eventArgs)
         {
-            await Navigation.PushAsync(new FilterResultPage(PriceSlider.LowerValue, PriceSlider.UpperValue, SizeSlider.LowerValue, SizeSlider.UpperValue, LocationEntry.Text));
+             Navigation.PushAsync(new FilterResultPage(PriceSlider.LowerValue, PriceSlider.UpperValue, SizeSlider.LowerValue, SizeSlider.UpperValue, LocationEntry.Text));
         }
     }
 }
