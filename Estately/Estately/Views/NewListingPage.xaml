@@ -14,29 +14,37 @@
                 <Label Text="Test" FontSize="Title"/>
                 <Entry Text="{Binding Title}" Placeholder="Tittle"/>
                 <Entry Text="{Binding Description}" Placeholder="Description"/>
-                <Picker
-                   ItemsSource="{Binding ItemInfos}"
-                    Title="Listing Price Currency"
-                    ItemDisplayBinding="{Binding IteamName}"
-                    SelectedItem="{Binding SelectedItemInfos}"
-                </Picker>
-                <Entry Text="{Binding Property Size }" Placeholder="Property Size "/>
-                    <Picker
-                         ItemsSource="{Binding ItemInfos}"
-                    Title="Listing Property Size"
-                    ItemDisplayBinding="{Binding IteamName}"
-                    SelectedItem="{Binding SelectedItemInfos}"
-                 <!--   Text="{Binding Property Size Metric }" Placeholder="Property Size Metric " -->
-                    </Picker>
-                    <Picker ItemsSource="{Binding ItemInfos}"
-                    Title="Listing Type"
-                    ItemDisplayBinding="{Binding IteamName}"
-                    SelectedItem="{Binding SelectedItemInfos}"
-                    </Picker>
-                        <Entry Text="{Binding Property Pictures }" Placeholder="Property Pictures "/>
-                <Entry Text="{Binding Location }" Placeholder="Location "/>
                 
-                    <Entry Text="{Binding Property Features  }" Placeholder="Property Features "/>
+                  <Picker Title="Select a Listing Price Currency"
+                      TitleColor="Red">
+                 <Picker.Items>
+                       <x:String>USD</x:String>
+                       <x:String>NIS</x:String>
+                       <x:String>EUR</x:String>    
+                 </Picker.Items> </Picker>
+
+              <Entry Text="{Binding Price }" Placeholder="Price "/> 
+             <Entry Text="{Binding Property Size }" Placeholder="Property Size "/>
+             <Picker Title="Select a  Property Size Metric"
+                      TitleColor="Red">
+                 <Picker.Items>
+                       <x:String>sq. ft</x:String>
+                       <x:String>meters squared</x:String>
+                 </Picker.Items> </Picker> 
+                 <Picker Title="Select a Property Type"
+                      TitleColor="Red">
+                 <Picker.Items>
+                       <x:String>Residential</x:String>
+                       <x:String>Commercial</x:String>
+                        <x:String>Industrial</x:String>
+                        <x:String>Raw Land</x:String>
+                        <x:String>Special Use</x:String>
+                      
+                 </Picker.Items> </Picker> 
+                  
+                <Entry Text="{Binding Property Pictures }" Placeholder="Property Pictures "/>
+                <Entry Text="{Binding Location }" Placeholder="Location "/>
+                <Entry Text="{Binding Property Features  }" Placeholder="Property Features "/>
                 <Button Command="{Binding AddListingCommand}" WidthRequest="200" Text="Add Listing"/>
             </StackLayout>
             <ListView Grid.Row="1" x:Name="NewListing">
@@ -46,14 +54,14 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Title}"/>
                                 <Label Text="{Binding Description}"/>
-                                <!--- <Label Text="{Binding Price}"/> -->
-                                <Label Text="{Binding SelectedInfo.ItemName}"
-                                <Label Text="{Binding Property Size}"/>
-                                    <Label Text="{Binding Property Size Metric}"/>
-                                    <Label Text="{Binding Property Type}"/>
-                                    <Label Text="{Binding Property Pictures}"/>
-                                    <Label Text="{Binding Location}"/>
-                                    <Label Text="{Binding Property Features}"/>
+                                 <Label Text="{Binding Price Currency}"/>
+                                 <Label Text="{Binding Price}"/>
+                                 <Label Text="{Binding Property Size}"/>
+                                 <Label Text="{Binding Property Size Metric}"/>
+                                 <Label Text="{Binding Property Type}"/>
+                                 <Label Text="{Binding Property Pictures}"/>
+                                 <Label Text="{Binding Location}"/>
+                                  <Label Text="{Binding Property Features}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
