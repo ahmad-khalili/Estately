@@ -12,5 +12,7 @@ namespace Estately.Models
         public List<string> Features { get; set; }
         public double Price { get; set; }
         public double Size { get; set; }
+        public string Location { get; set; }
+        public string Featured { get; set; }
     }
 }
