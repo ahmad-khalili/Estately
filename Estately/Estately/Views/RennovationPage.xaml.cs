@@ -15,5 +15,12 @@ namespace Estately.Views
         {
             InitializeComponent();
         }
+        
+        private async void Button_clicked(Object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new RennovationPage2());
+        }
+
     }
 }
