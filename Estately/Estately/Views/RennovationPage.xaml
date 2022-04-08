@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   x:Class="Estately.Views.RennovationPage"
+                   Title="RennovationPage">
 
     <ContentPage.Content>
         <Grid VerticalOptions="Center">
@@ -42,7 +44,7 @@
             </Picker>
 
 
-            <Picker x:Name="PropertySize" Title="Select a Property Value" Grid.Row="4" TitleColor="Black">
+            <Picker x:Name="PropertyValue" Title="Select a Property Value" Grid.Row="4" TitleColor="Black">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
 
@@ -60,7 +62,8 @@
             <!-- <Entry Margin="20,0,20,0" x:Name = "Property size" Grid.Row="2" Text="{Binding size}" Placeholder="Property size" />
             <Entry Margin="20,0,20,0" x:Name = "Property value" Grid.Row="3"  Text="{Binding value}" Placeholder="Property value" /> -->
 
-            <Button Margin="20,0,20,30" HorizontalOptions="Center" WidthRequest="200" x:Name ="Continue" Grid.Row="9" Text="Continue" Command="{Binding LoginCommand}"/>
+     
+           <Button Margin="20,0,20,30" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" x:Name ="Continue" Grid.Row="9" Text="Continue" Clicked="Button_clicked" Command="{Binding ContinueCommand}
         </Grid>
     </ContentPage.Content>
 </ContentPage>
