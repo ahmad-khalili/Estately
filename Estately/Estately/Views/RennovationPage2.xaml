@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Estately.Views.RennovationPage2"
+             Title="RennovationPage">
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Label Padding="20,30,20,0" Text="Step 2 of 2" Grid.Row ="0" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" />
+
+
+            <Label x:Name="Room1" Text="{Binding Room1}" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+
+
+            
+
+            
+            <Picker x:Name="PropertySize" Title="Select a Property Size" Grid.Row="3" TitleColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+
+                        <x:String>100</x:String>
+                        <x:String>150</x:String>
+                        <x:String>200</x:String>
+                        <x:String>250</x:String>
+                        <x:String>300</x:String>
+                        <x:String>350</x:String>
+                        <x:String>More Than 350</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            
+            <Picker x:Name="PropertyValue" Title="Select a Property Value" Grid.Row="4" TitleColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:Int16}">
+
+                        <x:String>1000</x:String>
+                        <x:String>1500</x:String>
+                        <x:String>2000</x:String>
+                        <x:String>2500</x:String>
+                        <x:String>3000</x:String>
+                        <x:String>3500</x:String>
+                        <x:String>More Than 3500</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+
+
+            <Button Margin="20,0,20,30" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" x:Name ="Continue" Grid.Row="9" Text="Continue" Clicked="Button_clicked" Command="{Binding ContinueCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
