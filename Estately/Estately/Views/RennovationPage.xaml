@@ -1,13 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Estately.Views.RennovationPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="RennovationPage"
-                   BackgroundColor="Gray"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Label Padding="20,30,20,0" Text="Step 1 of 2" Grid.Row ="0" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" />
+
+           
+           <Entry Margin="20,0,20,0" x:Name = "City/zip code" Grid.Row="1"  Text="{Binding city}" Placeholder="City/zip code" Keyboard="Email"/>
+
+            <Picker x:Name="PropertySizeMetric" Title="Select a  Property Size Metric" Grid.Row="2" TitleColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                       <x:String>sq. ft</x:String>
+                       <x:String>meters squared</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Picker x:Name="PropertySize" Title="Select a Property Size" Grid.Row="3" TitleColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+
+                        <x:String>100</x:String>
+                        <x:String>150</x:String>
+                        <x:String>200</x:String>
+                        <x:String>250</x:String>
+                        <x:String>300</x:String>
+                        <x:String>350</x:String>
+                        <x:String>More Than 350</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+
+            <Picker x:Name="PropertySize" Title="Select a Property Value" Grid.Row="4" TitleColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+
+                        <x:String>1000</x:String>
+                        <x:String>1500</x:String>
+                        <x:String>2000</x:String>
+                        <x:String>2500</x:String>
+                        <x:String>3000</x:String>
+                        <x:String>3500</x:String>
+                        <x:String>More Than 3500</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- <Entry Margin="20,0,20,0" x:Name = "Property size" Grid.Row="2" Text="{Binding size}" Placeholder="Property size" />
+            <Entry Margin="20,0,20,0" x:Name = "Property value" Grid.Row="3"  Text="{Binding value}" Placeholder="Property value" /> -->
+
+            <Button Margin="20,0,20,30" HorizontalOptions="Center" WidthRequest="200" x:Name ="Continue" Grid.Row="9" Text="Continue" Command="{Binding LoginCommand}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
