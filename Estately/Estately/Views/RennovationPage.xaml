@@ -30,7 +30,7 @@
 
             <Picker x:Name="PropertySize" Title="Select a Property Size" Grid.Row="3" TitleColor="Black">
                 <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
+                    <x:Array Type="{x:Type x:Int32}">
 
                         <x:String>100</x:String>
                         <x:String>150</x:String>
@@ -46,7 +46,7 @@
 
             <Picker x:Name="PropertyValue" Title="Select a Property Value" Grid.Row="4" TitleColor="Black">
                 <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
+                    <x:Array Type="{x:Type x:Int32}">
 
                         <x:String>1000</x:String>
                         <x:String>1500</x:String>
