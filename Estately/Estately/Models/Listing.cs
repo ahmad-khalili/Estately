@@ -14,5 +14,6 @@ namespace Estately.Models
         public double Size { get; set; }
         public string Location { get; set; }
         public string Featured { get; set; }
+        public string Images { get; set; }
     }
 }

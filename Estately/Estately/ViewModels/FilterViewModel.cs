@@ -21,9 +21,9 @@ namespace Estately.ViewModels
             services = new FirebaseDB();
         }
 
-        public async Task<List<Listing>> filterListings(float startPrice, float endPrice, float startSize, float endSize, string location)
+        public async Task<List<Listing>> filterListings(float startPrice, float endPrice, float startSize, float endSize, string location, string type)
         {
-            return await services.FilterListing(startPrice, endPrice, startSize, endSize, location);
+            return await services.FilterListing(startPrice, endPrice, startSize, endSize, location, type);
         }
     }
 }

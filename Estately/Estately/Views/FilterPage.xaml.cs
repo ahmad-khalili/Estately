@@ -14,28 +14,18 @@ namespace Estately.Views
 {
     public partial class FilterPage : ContentPage
     {
+        string selectedType = null;
         public FilterPage()
         {
             InitializeComponent();
 
-            TypePicker.Items.Add("Residential");
-            TypePicker.Items.Add("Commercial");
-            TypePicker.Items.Add("Industrial");
-            TypePicker.Items.Add("Raw Land");
-            TypePicker.Items.Add("Special Use");
+            TypePicker.Items.Add("Sale");
+            TypePicker.Items.Add("Rent");
 
-            PriceSlider.DragStarted += RangeSliderOnDragStarted;
-            PriceSlider.DragCompleted += RangeSliderOnDragCompleted;
-            PriceSlider.LowerValueChanged += RangeSliderOnLowerValueChanged;
-            PriceSlider.UpperValueChanged += RangeSliderOnUpperValueChanged;
             PriceSlider.FormatLabel = currencyFormat;
-
-            SizeSlider.DragStarted += RangeSliderOnDragStarted;
-            SizeSlider.DragCompleted += RangeSliderOnDragCompleted;
-            SizeSlider.LowerValueChanged += RangeSliderOnLowerValueChanged;
-            SizeSlider.UpperValueChanged += RangeSliderOnUpperValueChanged;
             SizeSlider.FormatLabel = sizeFormat;
         }
+
 
         private string currencyFormat(Thumb thumb, float val)
         {
@@ -48,29 +38,23 @@ namespace Estately.Views
             return "sq ft." + value;
         }
 
-        private void RangeSliderOnUpperValueChanged(object sender, EventArgs eventArgs)
+        public async void FilterButtonClicked(object sender, EventArgs eventArgs)
         {
-            Debug.WriteLine("RangeSliderOnUpperValueChanged");
+            if (TypePicker.SelectedIndex > 0)
+            {
+                selectedType = TypePicker.Items[TypePicker.SelectedIndex];
+            }
+
+            await Navigation.PushAsync(new FilterResultPage(PriceSlider.LowerValue, PriceSlider.UpperValue, SizeSlider.LowerValue, SizeSlider.UpperValue, LocationEntry.Text, selectedType));
         }
 
-        private void RangeSliderOnLowerValueChanged(object sender, EventArgs eventArgs)
+        public void ClearButtonClicked(object sender, EventArgs eventArgs)
         {
-            Debug.WriteLine("RangeSliderOnLowerValueChanged");
-        }
-
-        private void RangeSliderOnDragCompleted(object sender, EventArgs eventArgs)
-        {
-            Debug.WriteLine("RangeSliderOnDragCompleted");
-        }
-
-        private void RangeSliderOnDragStarted(object sender, EventArgs eventArgs)
-        {
-            Debug.WriteLine("RangeSliderOnDragStarted");
-        }
-
-        private void FilterButtonClicked(object sender, EventArgs eventArgs)
-        {
-             Navigation.PushAsync(new FilterResultPage(PriceSlider.LowerValue, PriceSlider.UpperValue, SizeSlider.LowerValue, SizeSlider.UpperValue, LocationEntry.Text));
-        }
+            TypePicker.SelectedIndex = -1;
+            LocationEntry.Text = null;
+            PriceSlider.UpperValue = 500000;
+            SizeSlider.LowerValue = 0;
+            SizeSlider.UpperValue = 100000;
+        } 
     }
 }

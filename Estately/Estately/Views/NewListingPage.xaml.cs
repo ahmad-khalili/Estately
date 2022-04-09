@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Estately.ViewModels;
 
 namespace Estately.Views
 {
@@ -14,6 +15,9 @@ namespace Estately.Views
         public NewListingPage()
         {
             InitializeComponent();
+            BindingContext = new MarketplaceViewModel();
+            TypePicker.Items.Add("Sale");
+            TypePicker.Items.Add("Rent");
         }
     }
 }
