@@ -13,20 +13,38 @@ namespace Estately
     public class RegistrationViewModel
     {
         public string WebAPIkey = "AIzaSyDQDD2D9NbLAKCUTvnqcxbArU0UfuQF0u8";
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public Command RegisterCommand { get; set; }
 
-        /* async void signupbutton_Clicked(Object sender, EventArgs e)
-         {
-             try
-             {
-                 var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
-                 var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(UserNewEmail.Text, UserNewPassword.Text);
-                 string gettoken = auth.FirebaseToken;
-                 await App.Current.MainPage.DisplayAlert("Alert", gettoken, "Ok");
-             }
-             catch (Exception ex)
-             {
-                 await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
-             }*/
+        public async Task RegisterUser()
+        {
+            if (Email == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Email is Empty", "Ok");
+            }
 
+            if (Password == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Password is Empty", "Ok");
+            }
+
+            try
+            {
+                var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
+                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Email, Password);
+                string gettoken = auth.FirebaseToken;
+                await App.Current.MainPage.DisplayAlert("Success", Email, "Ok");
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Invalid Email or Password!", "OK");
+            }
+
+        }
+        public RegistrationViewModel()
+        {
+            RegisterCommand = new Command(async () => await RegisterUser());
+        }
     }
 }

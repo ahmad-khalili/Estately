@@ -7,36 +7,35 @@ using System.Collections.ObjectModel;
 using MvvmHelpers;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Estately.Views;
 
 namespace Estately.ViewModels
 {
-    public class MarketplaceViewModel : BaseViewModel
+    public class MarketplaceViewModel
     {
         FirebaseDB services;
-        public new string Title { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
-        public string Price { get; set; }
+        public double Price { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
 
-        public MarketplaceViewModel()
+        public Command AddListingCommand { get; set; }        public MarketplaceViewModel()
         {
             services = new FirebaseDB();
-            Listings = services.getListing();
+            AddListingCommand = new Command( async () => await AddListing());
+            FavoriteListingCommand = new Command(() => FavoriteListing());
         }
-        
 
-        private ObservableCollection<Listing> _listing = new ObservableCollection<Listing>();
-        public ObservableCollection<Listing> Listings
+        public async Task AddListing()
         {
-            get { return _listing; }
-            set
-            {
-                _listing = value;
-                OnPropertyChanged();
-            }
+            var listing = new Listing { Title = Title, Description = Description, Price = Price, Type = Type, Location = Location, Featured = "No" };
+            await services.AddListing(listing);
+            await App.Current.MainPage.DisplayAlert("Success", Title + " Added", "Ok");
+
         }
-        
+
         public async Task<List<Listing>> FeaturedListings(string type)
         {
             return await services.GetFeaturedProperties(type);
@@ -46,6 +45,10 @@ namespace Estately.ViewModels
         {
             return await services.GetNearbyProperties(type);
         }
-    
+
+        public async Task<List<Listing>> GetItemListing(string title)
+        {
+            return await services.GetListing(title);
+        }
     }
 }

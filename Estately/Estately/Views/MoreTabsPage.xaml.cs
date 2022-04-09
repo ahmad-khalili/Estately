@@ -15,5 +15,18 @@ namespace Estately.Views
         {
             InitializeComponent();        
         }
+
+        public async void ProfileTabbed(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+        public async void MortgageTabbed(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MortgagePage());
+        }
+        public async void RenovationTabbed(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RennovationPage());
+        }
     }
 }

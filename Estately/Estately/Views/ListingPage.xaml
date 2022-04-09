@@ -1,13 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Estately.Views.ListingPage">
+             x:Class="Estately.Views.ListingPage"
+             x:Name="page">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="ListingPagge"
-                   BackgroundColor="Gray"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <CollectionView x:Name="listingView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
+                        <Frame Grid.Row="0" HasShadow="True"
+           BorderColor="DarkGray"
+           CornerRadius="5"
+           HeightRequest="200"
+           VerticalOptions="CenterAndExpand"
+           BackgroundColor="White">
+                            <ImageButton Source="gs://estately-9a428.appspot.com/simple-house-exterior-white-background-illustration-195950905.jpg"
+                     Aspect="Fill"
+                     HeightRequest="150"
+                     WidthRequest="400"
+                     HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold"/>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="{Binding Price, StringFormat='${0:n}'}" Padding="30,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="{Binding Location}" Grid.Row="2" Grid.Column="0" FontSize="15" Padding="10,0,0,0" FontAttributes="Bold"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>

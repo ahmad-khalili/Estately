@@ -2,25 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.MarketplacePage"
+             xmlns:views="clr-namespace:Estately.Views"
              Title="Marketplace">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="AddButtonClicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid BackgroundColor="LightBlue" RowSpacing="10">
+        <Grid BackgroundColor="LightGray" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" BackgroundColor="LightBlue" Margin="5,10,5,0">
+            <Grid Grid.Row="0" BackgroundColor="LightGray" Margin="5,10,5,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <SearchBar Placeholder="Search" Grid.Column="0"/>
-                <Button Clicked="FilterButtonClicked" Grid.Column="1" Margin="-20,0,5,0" ScaleY="0.6" ScaleX="0.7" BackgroundColor="White"/>
+                <SearchBar TextColor="Black" PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0"/>
+                <ImageButton Clicked="FilterButtonClicked" Grid.Column="1" Padding="10,5,0,0">
+                    <ImageButton.Source>
+                        <FontImageSource FontFamily="MaterialIcons" Size="30" Color="Black" Glyph="&#xe429;"/>
+                    </ImageButton.Source>
+                </ImageButton>
             </Grid>
 
-            <Grid Grid.Row="1" >
+            <Grid Grid.Row="1">
                 <Grid HorizontalOptions="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -30,10 +42,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
-
-                    <Button Grid.Row="0" Grid.Column="0" Clicked="AllButtonClicked" CornerRadius="25" Text="All" FontSize="Medium" TextColor="Black"/>
-                    <Button Grid.Row="0" Grid.Column="1" Clicked="ForSaleButtonClicked" CornerRadius="25" Text="For Sale" FontSize="Medium" TextColor="Black"/>
-                    <Button Grid.Row="0" Grid.Column="2" Clicked="ForRentButtonClicked" CornerRadius="25" Text="For Rent" FontSize="Medium" TextColor="Black"/>
+                    <Button x:Name="AllButton" Grid.Row="0" Grid.Column="0" Clicked="AllButtonClicked" CornerRadius="17" Text="All" FontSize="Medium" TextColor="Black"/>
+                    <Button x:Name="SaleButton" Grid.Row="0" Grid.Column="1" Clicked="ForSaleButtonClicked" CornerRadius="17" Text="For Sale" FontSize="Medium" TextColor="Black"/>
+                    <Button x:Name="RentButton" Grid.Row="0" Grid.Column="2" Clicked="ForRentButtonClicked" CornerRadius="17" Text="For Rent" FontSize="Medium" TextColor="Black"/>
                 </Grid>
             </Grid>
 
@@ -44,83 +55,31 @@
                             <RowDefinition Height="350"/>
                             <RowDefinition Height="350"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Margin="20,0,20,0" BackgroundColor="Wheat">
+                        <Grid Grid.Row="0" Margin="20,0,20,0" BackgroundColor="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Text="Featuerd Properties" FontSize="26" BackgroundColor="LightBlue"/>
-                            <CarouselView x:Name="featuredList" Grid.Row="1">
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Featuerd Properties" TextColor="Black" FontSize="26" BackgroundColor="LightGray"/>
+                            <CarouselView Loop="True" x:Name="featuredList" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="100" />
-                                            </Grid.RowDefinitions>
-                                            <Frame Grid.Row="0" HasShadow="True"
-                                                BorderColor="DarkGray"
-                                                CornerRadius="5"
-                                                HeightRequest="150"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ImageButton Source="house"
-                                                           Aspect="AspectFill"
-                                                           HeightRequest="150"
-                                                           WidthRequest="200"
-                                                           HorizontalOptions="Center" />
-                                            </Frame>
-                                            <Label Text="{Binding Type}" x:Name="TypeLabel" HorizontalOptions="End" Margin="5,20,10,150" FontAttributes="Bold"/>
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto"/>
-                                                    <ColumnDefinition Width="auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Label x:Name="TitleLabel" Text="{Binding Title}" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-                                                <Label x:Name="PriceLabel" Text="{Binding Price}" Grid.Column="3" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-                                                <Label x:Name="LocationLabel" Text="{Binding Location}" Grid.Row="1" Grid.Column="0" FontSize="15"/>
-                                            </Grid>
-                                        </Grid>
+                                        <views:ListingComponent/>
                                     </DataTemplate>
                                 </CarouselView.ItemTemplate>
                             </CarouselView>
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="20,9,20,10" BackgroundColor="Wheat">
+                        <Grid Grid.Row="1" Margin="20,0,20,10" BackgroundColor="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Text="Nearby Properties" FontSize="26" BackgroundColor="LightBlue"/>
-                            <CarouselView x:Name="nearbyList" Grid.Row="1">
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Nearby Properties" TextColor="Black" FontSize="26" BackgroundColor="LightGray"/>
+                            <CarouselView Loop="True" x:Name="nearbyList" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="100" />
-                                            </Grid.RowDefinitions>
-                                            <Frame Grid.Row="0" HasShadow="True"
-                                                BorderColor="DarkGray"
-                                                CornerRadius="5"
-                                                HeightRequest="150"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ImageButton Source="house"
-                                                           Aspect="AspectFill"
-                                                           HeightRequest="150"
-                                                           WidthRequest="200"
-                                                           HorizontalOptions="Center" />
-                                            </Frame>
-                                            <Label Text="{Binding Type}" x:Name="TypeLabel" HorizontalOptions="End" Margin="5,20,10,150" FontAttributes="Bold"/>
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto"/>
-                                                    <ColumnDefinition Width="auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Label Text="{Binding Title}" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Price}" Grid.Column="3" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Location}" Grid.Row="1" Grid.Column="0" FontSize="15"/>
-                                            </Grid>
-                                        </Grid>
+                                        <views:ListingComponent/>
                                     </DataTemplate>
                                 </CarouselView.ItemTemplate>
                             </CarouselView>
@@ -131,3 +90,4 @@
         </Grid>
     </ContentPage.Content>
 </ContentPage>
+    

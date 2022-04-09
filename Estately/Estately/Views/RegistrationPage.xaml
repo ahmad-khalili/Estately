@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Estately.Views.RegistrationPage"
+             Title="Register An Account">
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Entry  Margin =" 20,0,20,0" x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email " Keyboard="Email"/>
+            <Entry  Margin =" 20,0,20,0" x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
+            <Entry  Margin =" 20,0,20,0"  x:Name="ConformPasswordEntry"  Grid.Row="2" Text="{Binding Password}" Placeholder="Confirm Password" IsPassword="True"/>
+            <Button Margin ="20,0,20,30" x:Name="UserRegistrationButton"  HorizontalOptions="Center" WidthRequest="200"  Grid.Row="9"  Text="Register Now" Command="{Binding RegisterCommand}"/>
+        
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

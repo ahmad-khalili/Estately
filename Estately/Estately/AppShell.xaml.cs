@@ -16,6 +16,8 @@ namespace Estately
             Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
             Routing.RegisterRoute(nameof(NotificationsPage), typeof(NotificationsPage));
             Routing.RegisterRoute(nameof(MoreTabsPage), typeof(MoreTabsPage));
+            Routing.RegisterRoute(nameof(FilterPage), typeof(FilterPage));
+            Routing.RegisterRoute(nameof(FilterResultPage), typeof(FilterResultPage));
         }
 
     }

@@ -1,4 +1,4 @@
-﻿using Firebase.Auth;
+using Firebase.Auth;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,33 +6,69 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Estately
 {
-    public class LoginViewModel
+
+    public class LoginPageViewModel
     {
+
         public string WebAPIkey = "AIzaSyDQDD2D9NbLAKCUTvnqcxbArU0UfuQF0u8";
 
-        /*async void signupbutton_Clicked(Object sender, EventArgs e)
+
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+        public async Task LoginUser()
         {
-            await Navigation.PushAsync(new SignupPage());
+            if (string.IsNullOrEmpty(Email))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Email is Empty!", "Ok");
+            }
+            else if (string.IsNullOrEmpty(Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Password is Empty!", "Ok");
+
+            }
+            else
+            {
+                try
+                {
+                    var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
+                    var auth = await authProvider.SignInWithEmailAndPasswordAsync(Email, Password);
+                    var content = await auth.GetFreshAuthAsync();
+                    var serializedcontnet = JsonConvert.SerializeObject(content);
+                    Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
+                    await App.Current.MainPage.DisplayAlert("Welcome", Email, "Ok");
+                }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Alert", "Incorrect Email or Password", "Ok");
+                }
+
+            }
+        }
+
+
+        /*public async void NavigateToRegister()
+        {
+           // await App.Current.MainPage.Navigation.PushAsync(new RegistrationPage());
         }*/
 
-        /*async void loginbutton_Clicked(Object sender, EventArgs e)
+        public ICommand LoginCommand { get; set; }
+        public Command NoAccountCommand { get; set; }
+
+
+        public LoginPageViewModel()
         {
-            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
-            try
-            {
-                var auth = await authProvider.SignInWithEmailAndPasswordAsync(UserLoginEmail.Text, UserLoginPassword.Text);
-                var content = await auth.GetFreshAuthAsync();
-                var serializedcontnet = JsonConvert.SerializeObject(content);
-                Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", ex.Message,"Invalid useremail or password", "OK");
-            }*/
+            LoginCommand = new Command(async () => await LoginUser());
+            //NoAccountCommand = new Command(async () => await NavigateToRegister());
+        }
+
     }
 }
+
+

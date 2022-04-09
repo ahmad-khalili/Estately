@@ -3,76 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.NewListingPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <StackLayout Grid.Row="0" VerticalOptions="Start">
-                <Label Text="Test" FontSize="Title"/>
-                <Entry Text="{Binding Title}" Placeholder="Tittle"/>
-                <Entry Text="{Binding Description}" Placeholder="Description"/>
-                
-                  <Picker Title="Select a Listing Price Currency"
-                      TitleColor="Red">
-                 <Picker.Items>
-                       <x:String>USD</x:String>
-                       <x:String>NIS</x:String>
-                       <x:String>EUR</x:String>    
-                 </Picker.Items> </Picker>
-
-              <Entry Text="{Binding Price }" Placeholder="Price "/> 
-             <Entry Text="{Binding Property Size }" Placeholder="Property Size "/>
-             <Picker Title="Select a  Property Size Metric"
-                      TitleColor="Red">
-                 <Picker.Items>
-                       <x:String>sq. ft</x:String>
-                       <x:String>meters squared</x:String>
-                 </Picker.Items> </Picker> 
-                 <Picker Title="Select a Property Type"
-                      TitleColor="Red">
-                 <Picker.Items>
-                       <x:String>Residential</x:String>
-                       <x:String>Commercial</x:String>
-                        <x:String>Industrial</x:String>
-                        <x:String>Raw Land</x:String>
-                        <x:String>Special Use</x:String>
-                      
-                 </Picker.Items> </Picker> 
-                  
-                <Entry Text="{Binding Property Pictures }" Placeholder="Property Pictures "/>
-                <Entry Text="{Binding Location }" Placeholder="Location "/>
-                <Entry Text="{Binding Property Features  }" Placeholder="Property Features "/>
-                <Button Command="{Binding AddListingCommand}" WidthRequest="200" Text="Add Listing"/>
-            </StackLayout>
-            <ListView Grid.Row="1" x:Name="NewListing">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Title}"/>
-                                <Label Text="{Binding Description}"/>
-                                 <Label Text="{Binding Price Currency}"/>
-                                 <Label Text="{Binding Price}"/>
-                                 <Label Text="{Binding Property Size}"/>
-                                    <Label Text="{Binding Property Size Metric}"/>
-                                    <Label Text="{Binding Property Type}"/>
-                                    <Label Text="{Binding Property Pictures}"/>
-                                    <Label Text="{Binding Location}"/>
-                                    <Label Text="{Binding Property Features}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>    
-            </ListView>
-        </Grid>
-        <StackLayout>
-            <Label Text="NewListingPage"
-                   BackgroundColor="Gray"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" VerticalOptions="Start" Padding="5,0,5,0">
+                <Entry Margin="0,10,0,10" Placeholder="Enter your title" Text="{Binding Title}"/>
+                <Label Margin="2,0,0,0" Text="Type" FontSize="Default" TextColor="Black"/>
+                <Picker Margin="0,0,0,10" x:Name="TypePicker" SelectedItem="{Binding Type}"/>
+                <Entry Margin="0,0,0,10" Placeholder="Enter Property's Location" Text="{Binding Location}"/>
+                <Entry Margin="0,0,0,10" Placeholder="A description of your property" Text="{Binding Description}"/>
+                <Entry Margin="0,0,0,10" Placeholder="Enter Price" Text="{Binding Price}"/>
+                </StackLayout>
+                <Button Grid.Row="2" Margin="70,80,70,30" Command="{Binding AddListingCommand}" Text="Create Listing"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
