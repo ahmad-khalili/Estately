@@ -3,11 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.MortgagePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="MortgagePage"
-                   BackgroundColor="Gray"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+  <StackLayout BackgroundColor="LightGray">
+            <Label Text="Calculate your Mortgage"
+                   BackgroundColor="Black"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   Margin="20"/>
+
+            <Label Text="Property Value" FontSize="20" FontAttributes="Bold" Margin="10,30,0,0"/>
+            <Entry x:Name="Value" Placeholder="Enter your property size" Margin="10" PlaceholderColor="Black" Keyboard="Numeric"/>
+            
+
+            <Label Text="Length of loan(years)" FontSize="20" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Picker x:Name="picker"
+                     TitleColor="Black"  Margin="10,0,300,0">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>5</x:String>
+                        <x:String>15</x:String>
+                        <x:String>30</x:String>
+                        <x:String>40</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Picker.SelectedIndex>0</Picker.SelectedIndex>
+            </Picker>
+
+            <Label x:Name="loanType" FontSize="Medium" TextColor="Black" IsVisible="False"/>
+
+            <Label Text="Down Payment" FontSize="20" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="payment" Placeholder="Enter your down payment" Margin="10" PlaceholderColor="Black" Keyboard="Numeric"/>
+
+            <Label Text="Interest Rate" FontSize="20" FontAttributes="Bold" Margin="10,0,0,0"/>
+
+            
+            <Label x:Name="InterestRatePercent" Text="1" HorizontalOptions="Start" FontSize="14" Margin="10,0,0,0"/>
+            <Slider x:Name="InterestRateSlider" Maximum="20" Minimum="1" HorizontalOptions="FillAndExpand" ValueChanged="InterestRate_Slider"  Margin="10,0,10,0"/>
+            <Grid>
+                <Label Grid.Column="0" Text="1%" Margin="12,0,0,0"/>
+                <Label Grid.Column="10" Text="20%" />
+            </Grid>
+
+            <Button Text="Calculate" Margin="40" Clicked="CalculateMortgage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
