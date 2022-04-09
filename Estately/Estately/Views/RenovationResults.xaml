@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Estately.Views.RenovationResults">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Estimated Value" 
+                HorizontalOptions="CenterAndExpand" FontSize="26" TextColor="Black" FontAttributes="Bold" />
+
+            <Label Text="Total Monthly Payment" 
+                HorizontalOptions="CenterAndExpand" FontSize="24" TextColor="Black" FontAttributes="Bold" Margin="0,40,0,0" />
+            <Label x:Name="Result" Text="House Price: " TextColor="Black" FontSize="24" HorizontalOptions="Center"/>
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Grid.Row="0" Text="Deatils:" TextColor="Black" FontSize="22" FontAttributes="Bold" Margin="0,100,0,0"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Proparty Size: " TextColor="Black" FontSize="18" />
+                <Label Grid.Row="1" Grid.Column="4" x:Name="PropartySize" TextColor="Black" FontSize="18" Margin="160,0,0,0" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="PropartyValue: " TextColor="Black" FontSize="18"/>
+                <Label Grid.Row="2" Grid.Column="4" x:Name="PropartyValue" TextColor="Black" FontSize="18" Margin="160,0,0,0" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Room 1: " TextColor="Black" FontSize="18"/>
+                <Label Grid.Row="2" Grid.Column="4" x:Name="Room1" TextColor="Black" FontSize="18" Margin="160,0,0,0" />
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
