@@ -1,13 +1,79 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Estately.Views.RennovationPage">
+             x:Class="Estately.Views.RennovationPage"
+             Title="Calculate Renovation">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="RennovationPage"
-                   BackgroundColor="Gray"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+
+
+            <StackLayout Padding="20" Spacing="8">
+
+             
+                <Label Text="PropartySize"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
+                <Entry x:Name="entry2"      Margin="20,0,20,0"  Grid.Row="2"  />
+
+                <Label Text="PropartyValue" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
+                <Entry x:Name="entry3"   Margin="20,0,20,10"  Grid.Row="3"  />
+
+                
+                <Label Text="Room 1"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
+                <Picker Margin="20,0,20,0"  Grid.Row="4" >
+                    <Picker.Items>
+                        <x:String>Bathroom</x:String>
+                        <x:String>Bedroom</x:String>
+                        <x:String>Kitchen</x:String>
+                        <x:String>Master Bathroom</x:String>
+                        <x:String>Master Bedroom</x:String>
+                        <x:String>Living Room</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Entry x:Name="room1" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+
+
+
+                <Label Text="Room 2" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
+                <Picker  Margin="20,0,20,0" Grid.Row="5">
+                    <Picker.Items>
+                        <x:String>Bathroom</x:String>
+                        <x:String>Bedroom</x:String>
+                        <x:String>Kitchen</x:String>
+                        <x:String>Master Bathroom</x:String>
+                        <x:String>Master Bedroom</x:String>
+                        <x:String>Living Room</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Entry x:Name="room2" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+
+                <Label Text="Room 3" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
+                <Picker  Margin="20,0,20,0"  Grid.Row="6">
+                    <Picker.Items>
+                        <x:String>Bathroom</x:String>
+                        <x:String>Bedroom</x:String>
+                        <x:String>Kitchen</x:String>
+                        <x:String>Master Bathroom</x:String>
+                        <x:String>Master Bedroom</x:String>
+                        <x:String>Living Room</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Entry x:Name="room3" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+
+
+            <Button Margin="20,0,20,30" HorizontalOptions="Center" WidthRequest="300" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Clicked ="CalculateRonovation"/>
+
+            </StackLayout>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>
