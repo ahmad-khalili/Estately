@@ -20,12 +20,11 @@ namespace Estately.ViewModels
         public double Price { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
-
-        public Command AddListingCommand { get; set; }        public MarketplaceViewModel()
+        public Command AddListingCommand { get; set; }        
+        public MarketplaceViewModel()
         {
             services = new FirebaseDB();
             AddListingCommand = new Command( async () => await AddListing());
-            FavoriteListingCommand = new Command(() => FavoriteListing());
         }
 
         public async Task AddListing()
