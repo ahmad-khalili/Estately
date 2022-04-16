@@ -2,9 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.MoreTabsPage"
+             xmlns:models="clr-namespace:Estately.Models"
              Title="More">
     <ContentPage.Content>
         <StackLayout>
+            <ListView x:Name="MoreList">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type Label}">
+                        <Label Text="Profile Page"/>
+                        <Label Text="Digital Contract Creator"/>
+                        <Label Text="Renovation Calculator"/>
+                        <Label Text="Mortgage Calculator"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Padding="10,0,0,0" FontSize="Medium" FontAttributes="Bold" Text="{Binding Text}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped = "ItemClicked"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

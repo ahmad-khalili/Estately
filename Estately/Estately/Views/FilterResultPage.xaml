@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.FilterResultPage"
              xmlns:views="clr-namespace:Estately.Views"
-             BackgroundColor="LightBlue"
+             BackgroundColor="LightGray"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
+        <ScrollView>
         <CollectionView x:Name="ListingsList" Margin="10">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <views:ListingComponent/>
+                    <views:ListingComponent BackgroundColor="White" Padding="0,0,0,50"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </ScrollView>
     </ContentPage.Content>
     </ContentPage>

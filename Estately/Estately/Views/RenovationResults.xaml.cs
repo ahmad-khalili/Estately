@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Estately.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RenovationResults : ContentPage
     {
         public RenovationResults(string propartySize, string room1, string room2, string room3)

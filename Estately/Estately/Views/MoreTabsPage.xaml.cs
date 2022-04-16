@@ -13,20 +13,24 @@ namespace Estately.Views
     {
         public MoreTabsPage()
         {
-            InitializeComponent();        
+            InitializeComponent();  
         }
 
-        public async void ProfileTabbed(object sender, EventArgs e)
+        public void ItemClicked(object sender, EventArgs eventArgs)
         {
-            await Navigation.PushAsync(new ProfilePage());
-        }
-        public async void MortgageTabbed(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MortgagePage());
-        }
-        public async void RenovationTabbed(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new RennovationPage());
+            var label = sender as Label;
+            if (label.Text == "Renovation Calculator")
+            {
+                Shell.Current.Navigation.PushAsync(new RennovationPage());
+            }
+            if (label.Text == "Profile Page")
+            {
+                Shell.Current.Navigation.PushAsync(new ProfilePage());
+            }
+            if (label.Text == "Mortgage Calculator")
+            {
+                Shell.Current.Navigation.PushAsync(new MortgagePage());
+            }
         }
     }
 }

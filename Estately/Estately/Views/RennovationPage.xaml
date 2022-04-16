@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.RennovationPage"
-             Title="Calculate Renovation">
+             Title="Calculate Renovation" BackgroundColor="LightGray">
     <ContentPage.Content>
+        <ScrollView>
         <Grid VerticalOptions="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -21,10 +22,10 @@
             <StackLayout Padding="20" Spacing="8">
 
              
-                <Label Text="PropartySize"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
+                <Label Text="Property Size"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
                 <Entry x:Name="entry2"      Margin="20,0,20,0"  Grid.Row="2"  />
 
-                <Label Text="PropartyValue" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
+                <Label Text="Property Value" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
                 <Entry x:Name="entry3"   Margin="20,0,20,10"  Grid.Row="3"  />
 
                 
@@ -74,7 +75,7 @@
 
             </StackLayout>
         </Grid>
-        
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
     
