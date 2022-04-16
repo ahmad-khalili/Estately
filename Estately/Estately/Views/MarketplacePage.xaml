@@ -66,7 +66,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Featuerd Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#F0F2F5"/>
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Featured Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#F0F2F5"/>
                             <CarouselView Loop="True" x:Name="featuredList" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>

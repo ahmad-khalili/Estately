@@ -28,13 +28,12 @@
             
             <Label x:Name="InterestRatePercent" Text="1" HorizontalOptions="Start" FontSize="14" Margin="10,0,0,0"/>
             <Slider ThumbColor="{StaticResource Primary}" x:Name="InterestRateSlider" Maximum="20" Minimum="1" HorizontalOptions="FillAndExpand" ValueChanged="InterestRate_Slider"  Margin="10,0,10,0"/>
-            <Slider x:Name="InterestRateSlider" Maximum="20" Minimum="1" HorizontalOptions="FillAndExpand" ValueChanged="InterestRate_Slider" Value="{Binding InterestRate}"  Margin="10,0,10,0"/>
             <Grid>
                 <Label Grid.Column="0" Text="1%" Margin="12,0,0,0"/>
                 <Label Grid.Column="10" Text="20%" />
             </Grid>
 
-            <Button Text="Calculate" Margin="40" Clicked="CalculateMortgage"/>
+            <Button Text="Calculate" Margin="40" Command="{Binding CalculateMortgage}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

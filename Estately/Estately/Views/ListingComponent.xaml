@@ -25,17 +25,16 @@
     </ImageButton>
     <Label TextColor="{StaticResource Primary}" Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold"/>
     <Grid Grid.Row="1">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ItemClicked"/>
+        </Grid.GestureRecognizers>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Label TextColor="Black" x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="ItemClicked"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <Label TextColor="Black" x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
         <Label TextColor="Black" Text="{Binding Location}" HorizontalOptions="End" Padding="0,0,10,0" Grid.Column="1" Grid.Row="0" FontSize="15" FontAttributes="Bold"/>
         <Label TextColor="Black" Text="{Binding Price, StringFormat='${0:n}'}" Grid.Row="2" Grid.Column="0" FontSize="20" Padding="10,0,0,0" FontAttributes="Bold"/>
     </Grid>
