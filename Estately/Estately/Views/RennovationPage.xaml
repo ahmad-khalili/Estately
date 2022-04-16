@@ -73,6 +73,7 @@
 
                     </Frame>
                     <Button Margin="20,0,20,30"  HorizontalOptions="Center"   WidthRequest="300" HeightRequest="50" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Command ="{Binding CalculateRenovation}"/>
+                </Grid>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
