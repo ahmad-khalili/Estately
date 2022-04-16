@@ -17,32 +17,13 @@ namespace Estately.Views
         public RennovationPage()
         {
             InitializeComponent();
+            BindingContext = new RenovationViewModel();
         }
-        private async void CalculateRonovation(object sender, EventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(entry2.Text) || string.IsNullOrEmpty(entry3.Text))
-            {
-                await DisplayAlert("Data error!", "Please fill input again", "Ok");
-                return;
-            }
-
-
-            string PropartySize = entry2.Text;
-
-            string PropartyValue = entry3.Text;
-
-            string Room1 = room1.Text;
-            string Room2 = room2.Text;
-            string Room3 = room3.Text;
-
-
-            await Navigation.PushAsync(new RenovationResults(PropartySize, Room1,Room2,Room3));
-
-        }
+     
 
     }
 }
+
 
 
 
