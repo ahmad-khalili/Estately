@@ -20,18 +20,47 @@ namespace Estately.ViewModels
         public double Price { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
-        public Command AddListingCommand { get; set; }        
+        public Command AddListingCommand { get; set; }
         public MarketplaceViewModel()
         {
             services = new FirebaseDB();
-            AddListingCommand = new Command( async () => await AddListing());
+            AddListingCommand = new Command(async () => await AddListing());
         }
 
         public async Task AddListing()
         {
-            var listing = new Listing { Title = Title, Description = Description, Price = Price, Type = Type, Location = Location, Featured = "No" };
-            await services.AddListing(listing);
-            await App.Current.MainPage.DisplayAlert("Success", Title + " Added", "Ok");
+            if (string.IsNullOrEmpty(Title))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Title is Empty!", "Ok");
+            }
+            else if (string.IsNullOrEmpty(Description))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Description is Empty!", "Ok");
+
+            }
+            else if (string.IsNullOrEmpty(Type))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Type is Empty!", "Ok");
+
+            }
+            else if (string.IsNullOrEmpty(Location))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Location is Empty!", "Ok");
+
+            }
+            else
+            {
+                try
+                {
+                    var listing = new Listing { Title = Title, Description = Description, Price = Price, Type = Type, Location = Location, Featured = "No" };
+                    await services.AddListing(listing);
+                    await App.Current.MainPage.DisplayAlert("Success", Title + " Added", "Ok");
+                }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Alert", "Incorrect or empty inputs", "Ok");
+                }
+            }
 
         }
 

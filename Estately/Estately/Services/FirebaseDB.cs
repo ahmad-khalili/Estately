@@ -145,33 +145,31 @@ namespace Estately.Services
 
         public async Task<List<Listing>> GetListing(string title)
         {
-            try
-            {
-                var listingToGet = (await client
-                    .Child("Listings")
-                    .OnceAsync<Listing>()).Select(item => new Listing()
-                    {
-                        Title = item.Object.Title,
-                        Price = item.Object.Price,
-                        Type = item.Object.Type,
-                        Location = item.Object.Location
-                    });
-                List<Listing> items = new List<Listing>();
-
-                foreach (var item in listingToGet)
+            var listingToGet = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).Select(item => new Listing()
                 {
+                    Title = item.Object.Title,
+                    Price = item.Object.Price,
+                    Type = item.Object.Type,
+                    Location = item.Object.Location,
+                    Description = item.Object.Description,
+                    Size = item.Object.Size,
+                    Feature1 = item.Object.Feature1,
+                    Feature2 = item.Object.Feature2,
+                    Feature3 = item.Object.Feature3,
+                    Feature4 = item.Object.Feature4, 
+                });
+            List<Listing> items = new List<Listing>();
+
+            foreach(var item in listingToGet)
+            {
                     if (item.Title.Equals(title))
                     {
                         items.Add(item);
                     }
                 }
                 return items;
-            }
-            catch (TargetInvocationException ex)
-            {
-                Console.WriteLine(ex.InnerException.Message);
-                return null;
-            }
         }
 
         public async Task<List<Listing>> GetNearbyProperties(string type)
