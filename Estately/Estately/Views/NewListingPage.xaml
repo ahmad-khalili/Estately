@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Estately.Views.NewListingPage">
+             x:Class="Estately.Views.NewListingPage"
+             Title="NewListing">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" VerticalOptions="Start" Padding="5,0,5,0">
-                <Entry Margin="0,10,0,10" Placeholder="Enter your title" Text="{Binding Title}"/>
-                <Label Margin="2,0,0,0" Text="Type" FontSize="Default" TextColor="Black"/>
-                <Picker Margin="0,0,0,10" x:Name="TypePicker" SelectedItem="{Binding Type}"/>
-                <Entry Margin="0,0,0,10" Placeholder="Enter Property's Location" Text="{Binding Location}"/>
-                <Entry Margin="0,0,0,10" Placeholder="A description of your property" Text="{Binding Description}"/>
-                <Entry Margin="0,0,0,10" Placeholder="Enter Price" Text="{Binding Price}"/>
+                <Label Text="Please Add Information " TextColor="#2E4053" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,30,0,0" />
+                <StackLayout Grid.Row="0" VerticalOptions="Center" Padding="5,0,5,0" Margin="20,0,20,150" >
+
+                    <Frame BackgroundColor="#D6EAF8" CornerRadius="15">
+                        <StackLayout>
+                            <Entry Margin="0,10,0,10" Placeholder="Enter your title" Text="{Binding Title}"/>
+                    <Picker Margin="0,0,0,10" x:Name="TypePicker" Title="Choose Type" SelectedItem="{Binding Type}"/>
+                    <Entry Margin="0,0,0,10" Placeholder="Enter Property's Location" Text="{Binding Location}"/>
+                    <Entry Margin="0,0,0,10" Placeholder="A description of your property" Text="{Binding Description}"/>
+                     <Entry Margin="0,0,0,10" Placeholder="Enter Price" Text="{Binding Price}"/>
+                        </StackLayout>    </Frame>
+                
                 </StackLayout>
-                <Button Grid.Row="2" Margin="70,80,70,30" Command="{Binding AddListingCommand}" Text="Create Listing"/>
+                <StackLayout VerticalOptions="End" Margin="0,500,0,0" >
+                       
+                    <Button Grid.Row="2" Margin="70,80,70,30" Command="{Binding AddListingCommand}" Text="Create Listing" CornerRadius="15" BackgroundColor="#2874A6"/>
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
