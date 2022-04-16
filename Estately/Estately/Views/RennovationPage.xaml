@@ -4,77 +4,79 @@
              x:Class="Estately.Views.RennovationPage"
              Title="Calculate Renovation">
     <ContentPage.Content>
-        <Grid VerticalOptions="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+        <ScrollView>
+            <Grid>
+                <Grid VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+
+                    <Frame BackgroundColor="#D6EAF8" Padding="20" Margin="20,20,20,2" CornerRadius="15">
+                        <StackLayout Padding="20" Spacing="2">
+
+                            <Label Text="PropartySize"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"/>
+                            <Entry x:Name="entry2" Placeholder="Sq.ft." Margin="20,0,20,0"  Grid.Row="2"  Text="{Binding PropartySize}"/>
+
+                            <Label Text="PropartyValue" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" />
+                            <Entry x:Name="entry3" Placeholder="$"  Margin="20,0,20,10"  Grid.Row="3" Text="{Binding PropartyValue}" />
+
+                            <Label Text="Room 1"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
+                            <Picker Margin="20,0,20,0"  Grid.Row="4"  >
+                                <Picker.Items>
+                                    <x:String>Bathroom</x:String>
+                                    <x:String>Bedroom</x:String>
+                                    <x:String>Kitchen</x:String>
+                                    <x:String>Master Bathroom</x:String>
+                                    <x:String>Master Bedroom</x:String>
+                                    <x:String>Living Room</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Entry x:Name="room1" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" Text="{Binding Room1}" />
 
 
 
-            <StackLayout Padding="20" Spacing="8">
+                            <Label Text="Room 2" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
+                            <Picker  Margin="20,0,20,0" Grid.Row="5">
+                                <Picker.Items>
+                                    <x:String>Bathroom</x:String>
+                                    <x:String>Bedroom</x:String>
+                                    <x:String>Kitchen</x:String>
+                                    <x:String>Master Bathroom</x:String>
+                                    <x:String>Master Bedroom</x:String>
+                                    <x:String>Living Room</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Entry x:Name="room2" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value"  Text="{Binding Room2}"/>
 
-             
-                <Label Text="PropartySize"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                <Entry x:Name="entry2"      Margin="20,0,20,0"  Grid.Row="2"  />
-
-                <Label Text="PropartyValue" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
-                <Entry x:Name="entry3"   Margin="20,0,20,10"  Grid.Row="3"  />
-
-                
-                <Label Text="Room 1"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                <Picker Margin="20,0,20,0"  Grid.Row="4" >
-                    <Picker.Items>
-                        <x:String>Bathroom</x:String>
-                        <x:String>Bedroom</x:String>
-                        <x:String>Kitchen</x:String>
-                        <x:String>Master Bathroom</x:String>
-                        <x:String>Master Bedroom</x:String>
-                        <x:String>Living Room</x:String>
-                    </Picker.Items>
-                </Picker>
-                <Entry x:Name="room1" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
-
-
-
-                <Label Text="Room 2" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
-                <Picker  Margin="20,0,20,0" Grid.Row="5">
-                    <Picker.Items>
-                        <x:String>Bathroom</x:String>
-                        <x:String>Bedroom</x:String>
-                        <x:String>Kitchen</x:String>
-                        <x:String>Master Bathroom</x:String>
-                        <x:String>Master Bedroom</x:String>
-                        <x:String>Living Room</x:String>
-                    </Picker.Items>
-                </Picker>
-                <Entry x:Name="room2" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
-
-                <Label Text="Room 3" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
-                <Picker  Margin="20,0,20,0"  Grid.Row="6">
-                    <Picker.Items>
-                        <x:String>Bathroom</x:String>
-                        <x:String>Bedroom</x:String>
-                        <x:String>Kitchen</x:String>
-                        <x:String>Master Bathroom</x:String>
-                        <x:String>Master Bedroom</x:String>
-                        <x:String>Living Room</x:String>
-                    </Picker.Items>
-                </Picker>
-                <Entry x:Name="room3" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+                            <Label Text="Room 3" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
+                            <Picker  Margin="20,0,20,0"  Grid.Row="6">
+                                <Picker.Items>
+                                    <x:String>Bathroom</x:String>
+                                    <x:String>Bedroom</x:String>
+                                    <x:String>Kitchen</x:String>
+                                    <x:String>Master Bathroom</x:String>
+                                    <x:String>Master Bedroom</x:String>
+                                    <x:String>Living Room</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Entry x:Name="room3" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" Text="{Binding Room3}"/>
 
 
-            <Button Margin="20,0,20,30" HorizontalOptions="Center" WidthRequest="300" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Clicked ="CalculateRonovation"/>
 
-            </StackLayout>
-        </Grid>
-        
+                        </StackLayout>
+
+                    </Frame>
+                    <Button Margin="20,0,20,30"  HorizontalOptions="Center"   WidthRequest="300" HeightRequest="50" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Command ="{Binding CalculateRenovation}"/>
+
+                </Grid>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
     
