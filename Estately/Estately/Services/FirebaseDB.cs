@@ -140,7 +140,13 @@ namespace Estately.Services
                     Title = item.Object.Title,
                     Price = item.Object.Price,
                     Type = item.Object.Type,
-                    Location = item.Object.Location
+                    Location = item.Object.Location,
+                    Description = item.Object.Description,
+                    Size = item.Object.Size,
+                    Feature1 = item.Object.Feature1,
+                    Feature2 = item.Object.Feature2,
+                    Feature3 = item.Object.Feature3,
+                    Feature4 = item.Object.Feature4, 
                 });
             List<Listing> items = new List<Listing>();
 
