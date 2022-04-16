@@ -22,14 +22,14 @@
 
              
                 <Label Text="PropartySize"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                <Entry x:Name="entry2"      Margin="20,0,20,0"  Grid.Row="2"  />
+                <Entry x:Name="entry2"      Margin="20,0,20,0"  Grid.Row="2"  Text="{Binding PropartySize}"/>
 
                 <Label Text="PropartyValue" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
-                <Entry x:Name="entry3"   Margin="20,0,20,10"  Grid.Row="3"  />
+                <Entry x:Name="entry3"   Margin="20,0,20,10"  Grid.Row="3" Text="{Binding PropartyValue}" />
 
                 
                 <Label Text="Room 1"  Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                <Picker Margin="20,0,20,0"  Grid.Row="4" >
+                <Picker Margin="20,0,20,0"  Grid.Row="4"  >
                     <Picker.Items>
                         <x:String>Bathroom</x:String>
                         <x:String>Bedroom</x:String>
@@ -39,7 +39,7 @@
                         <x:String>Living Room</x:String>
                     </Picker.Items>
                 </Picker>
-                <Entry x:Name="room1" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+                <Entry x:Name="room1" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" Text="{Binding Room1}" />
 
 
 
@@ -54,7 +54,7 @@
                         <x:String>Living Room</x:String>
                     </Picker.Items>
                 </Picker>
-                <Entry x:Name="room2" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+                <Entry x:Name="room2" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value"  Text="{Binding Room2}"/>
 
                 <Label Text="Room 3" Margin="20,0,20,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" ></Label>
                 <Picker  Margin="20,0,20,0"  Grid.Row="6">
@@ -67,10 +67,10 @@
                         <x:String>Living Room</x:String>
                     </Picker.Items>
                 </Picker>
-                <Entry x:Name="room3" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" />
+                <Entry x:Name="room3" Margin="20,0,20,10"  Grid.Row="3" Placeholder="Enter room value" Text="{Binding Room3}"/>
 
 
-            <Button Margin="20,0,20,30" HorizontalOptions="Center" WidthRequest="300" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Clicked ="CalculateRonovation"/>
+            <Button Margin="20,0,20,30" HorizontalOptions="Center" WidthRequest="300" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Command ="{Binding CalculateRonovation}"/>
 
             </StackLayout>
         </Grid>

@@ -17,7 +17,10 @@ namespace Estately.Views
         public RennovationPage()
         {
             InitializeComponent();
+            BindingContext = new RenovationViewModel();
+
         }
+        /*
         private async void CalculateRonovation(object sender, EventArgs e)
         {
 
@@ -40,6 +43,7 @@ namespace Estately.Views
             await Navigation.PushAsync(new RenovationResults(PropartySize, Room1,Room2,Room3));
 
         }
+        */
 
     }
 }
