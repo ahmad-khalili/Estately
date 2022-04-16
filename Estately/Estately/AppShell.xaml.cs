@@ -1,4 +1,4 @@
-﻿using Estately.ViewModels;
+using Estately.ViewModels;
 using Estately.Views;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,10 @@ namespace Estately
             Routing.RegisterRoute(nameof(MoreTabsPage), typeof(MoreTabsPage));
             Routing.RegisterRoute(nameof(FilterPage), typeof(FilterPage));
             Routing.RegisterRoute(nameof(FilterResultPage), typeof(FilterResultPage));
+            Routing.RegisterRoute(nameof(RennovationPage), typeof(RennovationPage));
+            Routing.RegisterRoute(nameof(RenovationResults), typeof(RenovationResults));
+
+
         }
 
     }
