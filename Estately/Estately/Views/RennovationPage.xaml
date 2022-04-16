@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.RennovationPage"
-             Title="Calculate Renovation">
+             Title="Calculate Renovation" BackgroundColor="LightGray">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
@@ -73,8 +73,6 @@
 
                     </Frame>
                     <Button Margin="20,0,20,30"  HorizontalOptions="Center"   WidthRequest="300" HeightRequest="50" x:Name ="Calculate" Grid.Row="4" Text="Calculate" Command ="{Binding CalculateRenovation}"/>
-
-                </Grid>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
