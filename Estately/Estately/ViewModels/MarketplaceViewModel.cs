@@ -78,5 +78,15 @@ namespace Estately.ViewModels
         {
             return await services.GetListing(title);
         }
+
+        public async Task<List<Listing>> SearchFeaturedListings(string title)
+        {
+            return await services.SearchFeaturedListings(title);
+        }
+
+        public async Task<List<Listing>> SearchNearbyListings(string title)
+        {
+            return await services.SearchNearbyListings(title);
+        }
     }
 }

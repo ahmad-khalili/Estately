@@ -25,11 +25,11 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                
 
-                    <SearchBar TextColor="Black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0"/>
 
-                <ImageButton Clicked="FilterButtonClicked"  Margin="30,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#F0F2F5">
+                <SearchBar x:Name="ListingSearch" TextChanged="ListingSearchOnTextChanged" TextColor="Black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0"/>
+
+                <ImageButton Clicked="FilterButtonClicked" Margin="30,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#F0F2F5">
                
                 <ImageButton.Source>
                         <FontImageSource FontFamily="MaterialIcons" Size="30" Color="Black" Glyph="&#xe429;"/>
