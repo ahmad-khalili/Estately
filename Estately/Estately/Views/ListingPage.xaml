@@ -43,35 +43,35 @@
 
                             <Label x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Row="0" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
 
+                            <Label Text="{Binding Price, StringFormat='${0:n}'}" Grid.Row="0" Padding="270,0,0,0" FontSize="17" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="Price" Grid.Row="0" FontAttributes="Bold" Padding="270,20,0,0"/>
+
                             <Label Text="Information: " TextColor="Black" FontSize="22" Grid.Row="2" Padding="10,0,0,0" FontAttributes="Bold"/>
 
-                            <Label Text="{Binding Price, StringFormat='${0:n}'}"  Padding="10,0,0,0" Grid.Row="1" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="Location:" Grid.Row="3" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="20,0,0,0"/>
+                            <Label Text="{Binding Location}" Grid.Row="3" FontSize="15" Padding="100,3,0,0" TextColor="Black"/>
 
-                            <Label Text="Location:" Grid.Row="3" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Location}" Grid.Row="3" FontSize="15" Padding="90,3,0,0" TextColor="Black"/>
+                            <Label Text="Description:" Grid.Row="4" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="20,0,0,0"/>
+                            <Label Text="{Binding Description}" Grid.Row="4"  FontSize="15" TextColor="Black" Padding="120,3,0,0"/>
 
-                            <Label Text="Description:" Grid.Row="4" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Description}" Grid.Row="4"  FontSize="15" TextColor="Black" Padding="110,3,0,0"/>
-
-                            <Label Text="Size:" Grid.Row="5" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Size}" Grid.Row="5"  FontSize="15" TextColor="Black" Padding="55,3,0,0"/>
+                            <Label Text="Size:" Grid.Row="5" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="20,0,0,0"/>
+                            <Label Text="{Binding Size}" Grid.Row="5"  FontSize="15" TextColor="Black" Padding="60,3,0,0"/>
 
                             <BoxView Grid.Row="6" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Black"/>
 
-                            <Label Text="Deatails: " TextColor="Black" FontSize="22" Grid.Row="7" Padding="10,0,0,0" FontAttributes="Bold"/>
+                            <Label Text="Features: " TextColor="Black" FontSize="22" Grid.Row="7" Padding="10,0,0,0" FontAttributes="Bold"/>
 
-                            <Label Text="Feature1:" Grid.Row="8" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature1}" Grid.Row="8"  FontSize="15" TextColor="Black" Padding="90,3,0,0"/>
+                            <Label Text="&#x2022;" Grid.Row="8" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Text="{Binding Feature1}" Grid.Row="8"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
-                            <Label Text="Feature2:" Grid.Row="9" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature2}" Grid.Row="9"  FontSize="15" TextColor="Black" Padding="90,3,0,0"/>
+                            <Label Text="&#x2022;" Grid.Row="9" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Text="{Binding Feature2}" Grid.Row="9"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
-                            <Label Text="Feature3:" Grid.Row="10" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature3}" Grid.Row="10"  FontSize="15" TextColor="Black" Padding="90,3,0,0"/>
+                            <Label Text="&#x2022;" Grid.Row="10" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Text="{Binding Feature3}" Grid.Row="10"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
-                            <Label Text="Feature4:" Grid.Row="11" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature4}" Grid.Row="11"  FontSize="15" TextColor="Black" Padding="90,3,0,0"/>
-
+                            <Label Text="&#x2022;" Grid.Row="11" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Text="{Binding Feature4}" Grid.Row="11"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
                         </Grid>
                     </Grid>
