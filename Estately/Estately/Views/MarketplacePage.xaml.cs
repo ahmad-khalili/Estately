@@ -72,5 +72,18 @@ namespace Estately.Views
         {
             Navigation.PushAsync(new FilterPage());
         }
+
+        private async void ListingSearchOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        {
+            if (textChangedEventArgs.NewTextValue == null)
+            {
+                AllButtonClicked(sender, textChangedEventArgs);
+            }
+            else
+            {
+                featuredList.ItemsSource = await marketplaceViewModel.SearchFeaturedListings(textChangedEventArgs.NewTextValue);
+                nearbyList.ItemsSource = await marketplaceViewModel.SearchNearbyListings(textChangedEventArgs.NewTextValue);
+            }
+        }
     }
 }
