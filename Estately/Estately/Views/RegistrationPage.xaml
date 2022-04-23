@@ -14,20 +14,34 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <Label   Text="Welcom!" TextColor="#17202A" FontSize="Large" FontAttributes="Bold" Margin="20,50,0,650" />
-            <Label Text="Welcome to join us, please enter the information to register" TextColor="Gray" FontSize="12" FontAttributes="None" Margin="50,90,0,580"/>
-            <StackLayout Grid.Row="0" VerticalOptions="Center"   Padding="5,0,5,0"  Margin="20,10,20,250" >
-                <Frame BackgroundColor="#D6EAF8" CornerRadius="15" HeightRequest="250" WidthRequest="150" Margin="0,30,0,0" >
-                    <StackLayout>
-                        <Entry  Margin="0,10,0,20" x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email " Keyboard="Email"/>
-                        <Entry  Margin="0,10,0,20" x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
-                        <Entry   Margin="0,10,0,20"  x:Name="ConformPasswordEntry"  Grid.Row="2" Text="{Binding Password}" Placeholder="Confirm Password" IsPassword="True"/>
-                    </StackLayout>
+
+            <StackLayout  Grid.Row="0" Padding="5,0,5,0" VerticalOptions="Center" Margin="20,10,10,300">
+                <Label Text="Estatly" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,0,0,0" HorizontalOptions="Center" />
+                <Label Text="-----------------------------------------------------------------" TextColor="Black" FontSize="Large" Margin="10,0,10,350" HorizontalOptions="Center"/>
+            </StackLayout>
+            <Label Text="Singup" TextColor="Black" FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Center"  Margin="0,80,0,0"/>
+            <Label Text="Welcome to join us, please Create a New Acount!" TextColor ="	#808080" FontSize="Header" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" Margin="0,130,70,20"/>
+
+
+            <StackLayout HeightRequest="1" WidthRequest="2" Margin="90,200,120,0">
+                <Frame CornerRadius="9" VerticalOptions="Center"  Background="#ccd4e4">
+                    <Entry  x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email " Keyboard="Email" TextColor="Black"/>
+                </Frame>
+            </StackLayout>
+            
+            <StackLayout HeightRequest="1" WidthRequest="2" Margin="90,300,120,0">
+                <Frame CornerRadius="9" VerticalOptions="Center"  Background="#ccd4e4">
+                <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
+            </Frame>
+            </StackLayout>
+            <StackLayout HeightRequest="1" WidthRequest="2" Margin="90,400,120,0">
+                <Frame CornerRadius="9" VerticalOptions="Center"  Background="#ccd4e4">
+                    <Entry   x:Name="ConformPasswordEntry"  Grid.Row="2" Text="{Binding Password}" Placeholder="Confirm Password" IsPassword="True"/>
                 </Frame>
             </StackLayout>
 
             <StackLayout VerticalOptions="End" Margin="0,500,0,0">
-                <Button  Margin ="70,80,70,100" x:Name="UserRegistrationButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9"  Text="Register Now" BackgroundColor="#2874A6 " CornerRadius="15"  HeightRequest="55"   Command="{Binding RegisterCommand}"/>
+                <Button  Margin ="90,80,90,100" x:Name="UserRegistrationButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9"  Text="Register Now" BackgroundColor="#2874A6 " CornerRadius="15"  HeightRequest="55" WidthRequest="250"   Command="{Binding RegisterCommand}"/>
             </StackLayout>
 
         </Grid>
