@@ -4,43 +4,44 @@
              x:Class="Estately.Views.LoginPage"
              Title="Sign in">
 
-        <ContentPage.Content>
-            <Grid VerticalOptions="Center">
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center" BackgroundColor="#e3f2fd">
 
-                <Grid.RowDefinitions>
+            <Grid.RowDefinitions>
 
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
 
-                <StackLayout  Grid.Row="0" Padding="5,0,5,0" VerticalOptions="Center" Margin="20,10,10,300">
-                    <Label Text="Estatly" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,0,0,0" HorizontalOptions="Center" />
-                    <Label Text="-----------------------------------------------------------------" TextColor="Black" FontSize="Large" Margin="10,0,10,350" HorizontalOptions="Center"/>
-                </StackLayout>
-                <Label Text="Login" TextColor="Black" FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Center"  Margin="0,80,0,0"/>
+            <StackLayout  Grid.Row="0" Padding="5,0,5,0" VerticalOptions="Center" Margin="20,10,10,300">
+                <Label Text="Estatly" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,0,0,0" HorizontalOptions="Center" />
+                <Label Text="-----------------------------------------------------------------" TextColor="Black" FontSize="Large" Margin="10,0,10,350" HorizontalOptions="Center"/>
+            </StackLayout>
+            <Label Text="Login" TextColor="Black" FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Center"  Margin="0,80,0,0"/>
             <Label Text="Hello!,please enter the information to login" TextColor ="	#808080" FontSize="Header" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" Margin="0,130,70,20"/>
 
 
-                <StackLayout HeightRequest="1" WidthRequest="2" Margin="90,220,120,0">
-                    <Frame CornerRadius="9" VerticalOptions="Center"  Background="#ccd4e4">
-                        <Entry  x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email " Keyboard="Email" TextColor="Black"/>
-                    </Frame>
-                </StackLayout>
+            <StackLayout Margin="90,220,120,0">
+                <Frame CornerRadius="20" VerticalOptions="Center" HeightRequest="39" WidthRequest="0"  BackgroundColor="White">
+                    <Entry  x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email " Keyboard="Email" TextColor="Black"/>
+                </Frame>
+            </StackLayout>
 
-                <StackLayout HeightRequest="1" WidthRequest="2" Margin="90,320,120,0">
-                    <Frame CornerRadius="9" VerticalOptions="Center"  Background="#ccd4e4">
-                        <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
-                    </Frame>
-                </StackLayout>
-              
+            <StackLayout  Margin="90,320,120,0">
+                <Frame CornerRadius="20" VerticalOptions="Center" WidthRequest="0" HeightRequest="39"  Background="white">
+                    <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
+                </Frame>
+            </StackLayout>
+            <Label Text="Don't have an account? " FontFamily="Lobster-Regular" Margin="10,420,0,0"  TextColor="Gray"/>
+            <Label Text="Register now."  FontFamily="Lobster-Regular" Margin="155,420,0,0" TextColor="Blue" />
 
             <StackLayout VerticalOptions="End" Margin="0,500,0,0">
                 <Button  Margin ="90,80,90,100" x:Name="LoginButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9"  Text="LOGIN" BackgroundColor="#2874A6 " CornerRadius="15"  HeightRequest="55" WidthRequest="250" Command="{Binding LoginCommand}"/>
             </StackLayout>
 
         </Grid>
-        </ContentPage.Content>
-    </ContentPage>
+    </ContentPage.Content>
+</ContentPage>
