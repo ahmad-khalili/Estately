@@ -7,7 +7,7 @@
              Title="Filtering">
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="Grid">
+            <Grid x:Name="Grid" BackgroundColor="#e3f2fd">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -17,26 +17,24 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Padding="5,0,5,0"  Margin="20,70,20,170"  >
-                    <Frame BackgroundColor="#D6EAF8" CornerRadius="15" > 
-                        <StackLayout>
-                            <Label Grid.Row="0" Padding="10,10,0,0" FontSize="18" TextColor="#2E4053" Text="Property Type" FontAttributes="Bold"/>
-                            <Picker x:Name="TypePicker" Grid.Row="1" Margin="10,0,10,0" FontSize="Medium" Title="Select a Type"/>
-                            <Label Grid.Row="2" Padding="10,0,0,0" FontSize="18" TextColor="#2E4053"  Text="Property Location" FontAttributes="Bold" />
-                            <Entry x:Name="LocationEntry" Grid.Row="3" Placeholder="Enter Location" Margin="10,0,10,0"/>
-                            <Label Text="Maximum Price" Padding="10,0,0,0" Grid.Row="4" FontSize="18" TextColor="#2E4053" FontAttributes="Bold" />
+
+                <StackLayout>
+
+                    <Label Grid.Row="0"  Padding="10,10,0,0" FontSize="18" TextColor="#2E4053" Text="Property Type" FontAttributes="Bold"/>
+                    <Picker x:Name="TypePicker" Grid.Row="1" Margin="10,0,10,0" FontSize="Medium" Title="Select a Type"  />
+                    <Label Grid.Row="2" Padding="10,0,0,0" FontSize="18" TextColor="#2E4053"  Text="Property Location" FontAttributes="Bold" />
+                    <Entry x:Name="LocationEntry" Grid.Row="3" Placeholder="Enter Location" />
+                      <Label Text="Maximum Price" Padding="10,0,0,0" Grid.Row="4" FontSize="18" TextColor="#2E4053" FontAttributes="Bold" />
                             <forms:RangeSlider MinThumbHidden="True" Margin="10,0,10,0" Grid.Row="5" x:Name="PriceSlider" MaximumValue="500000"
                                    LowerValue="0" UpperValue="500000" StepValue="1000" VerticalOptions="Center" ShowTextAboveThumbs="True"
                                    MaterialUI="True" TextSize="Medium" TextColor="Black"/>
                             <Label Text="Property Size" Padding="10,0,0,0" Grid.Row="6" FontSize="18" TextColor="#2E4053" FontAttributes="Bold"/>
                             <forms:RangeSlider Margin="10,0,10,0" Grid.Row="7" x:Name="SizeSlider" MinimumValue="0" MaximumValue="100000" LowerValue="0"
                                    UpperValue="100000" StepValue="100" VerticalOptions="Center" ShowTextAboveThumbs="True"
-
                                 MaterialUI="True" TextSize="Medium" TextColor="Black"/>
                         </StackLayout>
-                    </Frame>
-                </StackLayout>
 
+     
 
                 <StackLayout VerticalOptions="End" Margin="0,500,0,0">
                     <Grid Grid.Row="10">

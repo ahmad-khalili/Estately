@@ -4,7 +4,7 @@
              x:Class="Estately.Views.MarketplacePage"
              xmlns:views="clr-namespace:Estately.Views"
              Title="Marketplace" >
- 
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="AddButtonClicked">
             <ToolbarItem.IconImageSource>
@@ -13,25 +13,25 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid BackgroundColor="#F0F2F5" RowSpacing="10">
+        <Grid BackgroundColor="#e3f2fd" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" BackgroundColor="#F0F2F5" Margin="5,10,5,0">
+            <Grid Grid.Row="0" BackgroundColor="#e3f2fd" Margin="5,10,5,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
 
-                <SearchBar x:Name="ListingSearch" TextChanged="ListingSearchOnTextChanged" TextColor="Black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0"/>
+                <SearchBar TextColor="black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0" BackgroundColor="#e3f2fd"/>
 
-                <ImageButton Clicked="FilterButtonClicked" Margin="30,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#F0F2F5">
-               
-                <ImageButton.Source>
+                <ImageButton Clicked="FilterButtonClicked"  Margin="30,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#e3f2fd">
+
+                    <ImageButton.Source>
                         <FontImageSource FontFamily="MaterialIcons" Size="30" Color="Black" Glyph="&#xe429;"/>
                     </ImageButton.Source>
                 </ImageButton>
@@ -47,10 +47,10 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="SaleButton" Grid.Row="0" Grid.Column="0" Clicked="ForSaleButtonClicked" CornerRadius="15" Text="For Sale" FontSize="14" TextColor="Black" Background=" #B1B5B9 "/>
-                    <Button x:Name="RentButton" Grid.Row="0" Grid.Column="1" Clicked="ForRentButtonClicked" CornerRadius="15" Text="For Rent" FontSize="14" TextColor="Black" Background="#B1B5B9 "/>
-                    <Button x:Name="AllButton" Grid.Row="0" Grid.Column="2" Clicked="AllButtonClicked" CornerRadius="15" Text="All" FontSize="14" TextColor="Black" Background= "#B1B5B9"/>
-        
+                    <Button x:Name="SaleButton" Grid.Row="0" Grid.Column="0" Clicked="ForSaleButtonClicked" CornerRadius="15" Text="For Sale" FontSize="14" FontAttributes="Bold" TextColor="White"  Background="#2874A6"/>
+                    <Button x:Name="RentButton" Grid.Row="0" Grid.Column="1" Clicked="ForRentButtonClicked" CornerRadius="15" Text="For Rent" FontSize="14" FontAttributes="Bold" TextColor="White" Background="#2874A6"/>
+                    <Button x:Name="AllButton" Grid.Row="0" Grid.Column="2" Clicked="AllButtonClicked" CornerRadius="15" Text="All" FontAttributes="Bold" FontSize="14" TextColor="White" Background= "#2874A6"/>
+
                 </Grid>
             </Grid>
 
@@ -65,8 +65,8 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Featured Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#F0F2F5"/>
+                            </Grid.RowDefinitions >
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Featuerd Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#e3f2fd"/>
                             <CarouselView Loop="True" x:Name="featuredList" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
@@ -81,7 +81,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Nearby Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#F0F2F5"/>
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Nearby Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#e3f2fd"/>
                             <CarouselView Loop="True" x:Name="nearbyList" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
@@ -96,4 +96,3 @@
         </Grid>
     </ContentPage.Content>
 </ContentPage>
-    
