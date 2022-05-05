@@ -16,74 +16,10 @@ namespace Estately.Views
 {
     public partial class MarketplacePage : ContentPage
     {
-        Color primary;
-        readonly MarketplaceViewModel marketplaceViewModel = new MarketplaceViewModel();
-
         public MarketplacePage()
         {
             InitializeComponent();
-            primary = AllButton.BackgroundColor;
-            BindingContext = marketplaceViewModel;
-        }
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            AllButton.BackgroundColor = primary;
-            SaleButton.BackgroundColor = Color.DarkGray;
-            RentButton.BackgroundColor = Color.DarkGray;
-
-            featuredList.ItemsSource = await marketplaceViewModel.FeaturedListings(null);
-            nearbyList.ItemsSource = await marketplaceViewModel.NearbyListings(null);
-        }
-
-        public async void AllButtonClicked(object sender, EventArgs eventArgs)
-        {
-            AllButton.BackgroundColor = primary;
-            SaleButton.BackgroundColor = Color.DarkGray;
-            RentButton.BackgroundColor = Color.DarkGray;
-            featuredList.ItemsSource = await marketplaceViewModel.FeaturedListings(null);
-            nearbyList.ItemsSource = await marketplaceViewModel.NearbyListings(null);
-        }
-
-        public async void ForSaleButtonClicked(object sender, EventArgs eventArgs)
-        {
-            SaleButton.BackgroundColor= primary;
-            AllButton.BackgroundColor = Color.DarkGray;
-            RentButton.BackgroundColor = Color.DarkGray;
-            featuredList.ItemsSource = await marketplaceViewModel.FeaturedListings("Sale");
-            nearbyList.ItemsSource = await marketplaceViewModel.NearbyListings("Sale");
-        }
-
-        public async void ForRentButtonClicked(object sender, EventArgs eventArgs)
-        {
-            RentButton.BackgroundColor = primary;
-            SaleButton.BackgroundColor = Color.DarkGray;
-            AllButton.BackgroundColor = Color.DarkGray;
-            featuredList.ItemsSource = await marketplaceViewModel.FeaturedListings("Rent");
-            nearbyList.ItemsSource = await marketplaceViewModel.NearbyListings("Rent");
-        }
-
-        public async void AddButtonClicked(object sender, EventArgs eventArgs)
-        {
-            await Navigation.PushAsync(new NewListingPage());
-        }
-
-        public void FilterButtonClicked(object sender, EventArgs eventArgs)
-        {
-            Navigation.PushAsync(new FilterPage());
-        }
-
-        private async void ListingSearchOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
-        {
-            if (textChangedEventArgs.NewTextValue == null)
-            {
-                AllButtonClicked(sender, textChangedEventArgs);
-            }
-            else
-            {
-                featuredList.ItemsSource = await marketplaceViewModel.SearchFeaturedListings(textChangedEventArgs.NewTextValue);
-                nearbyList.ItemsSource = await marketplaceViewModel.SearchNearbyListings(textChangedEventArgs.NewTextValue);
-            }
+            BindingContext = new MarketplaceViewModel();
         }
     }
 }

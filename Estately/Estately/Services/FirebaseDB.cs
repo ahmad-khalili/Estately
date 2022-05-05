@@ -13,7 +13,7 @@ namespace Estately.Services
 {
     public class FirebaseDB
     {
-        FirebaseClient client;
+        readonly FirebaseClient client;
 
         public FirebaseDB()
         {
@@ -48,168 +48,20 @@ namespace Estately.Services
             await client.Child("Listings").Child(toDeleteListing.Key).DeleteAsync();
         }
 
-        public async Task<List<Listing>> SearchNearbyListings(string title) {
-            try
-            {
-                var toSearch = (await client
-                    .Child("Listings")
-                    .OnceAsync<Listing>()).Select(item => new Listing
-                    {
-                        Title = item.Object.Title,
-                        Description = item.Object.Description,
-                        Price = item.Object.Price,
-                        Size = item.Object.Size,
-                        Location = item.Object.Location,
-                        Type = item.Object.Type,
-                        Featured = item.Object.Featured
-                    }).Where(item => item.Title.Contains(title, System.StringComparison.CurrentCultureIgnoreCase) && item.Featured.Equals("No")).ToList();
+        public async Task<List<Listing>> GetListings() { 
+            var listings = (await client
+                .Child("Listings")
+                .OnceAsync<Listing>()).Select(listing => new Listing {
+                    Title = listing.Object.Title,
+                    Description = listing.Object.Description,
+                    Price = listing.Object.Price,
+                    Size = listing.Object.Size,
+                    Location = listing.Object.Location,
+                    Type = listing.Object.Type,
+                    Featured = listing.Object.Featured
+                }).ToList();
 
-                List<Listing> items = new List<Listing>();
-
-                if (toSearch.Count > 0)
-                {
-                    foreach (var item in toSearch)
-                    {
-                        items.Add(item);
-                    }
-                }
-                return items;
-            }
-            catch(Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
-                return null;
-            }
-            }
-
-        public async Task<List<Listing>> SearchFeaturedListings(string title)
-        {
-            try
-            {
-                var toSearch = (await client
-                    .Child("Listings")
-                    .OnceAsync<Listing>()).Select(item => new Listing
-                    {
-                        Title = item.Object.Title,
-                        Description = item.Object.Description,
-                        Price = item.Object.Price,
-                        Size = item.Object.Size,
-                        Location = item.Object.Location,
-                        Type = item.Object.Type,
-                        Featured = item.Object.Featured
-                    }).Where(item => item.Title.Contains(title, System.StringComparison.CurrentCultureIgnoreCase) && item.Featured.Equals("Yes")).ToList();
-
-                List<Listing> items = new List<Listing>();
-
-                if (toSearch.Count > 0)
-                {
-                    foreach (var item in toSearch)
-                    {
-                        items.Add(item);
-                    }
-                }
-                return items;
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
-                return null;
-            }
-        }
-
-        public async Task<List<Listing>> FilterListing(float startPrice, float endPrice, float startSize, float endSize, string location, string type)
-        {
-            try
-            {
-                var toFilter = (await client
-                    .Child("Listings")
-                    .OnceAsync<Listing>()).Select(item => new Listing
-                    {
-                        Title = item.Object.Title,
-                        Description = item.Object.Description,
-                        Price = item.Object.Price,
-                        Size = item.Object.Size,
-                        Location = item.Object.Location,
-                        Type = item.Object.Type
-                    }).ToList();
-                List<Listing> items = new List<Listing>();
-                foreach (var item in toFilter)
-                {
-                        if (location == null && type == null)
-                        {
-                            if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize)
-                            {
-                                items.Add(item);
-                            }
-                        }
-                        else if (type == null)
-                        {
-                            if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize && item.Location.Equals(location))
-                            {
-                                items.Add(item);
-                            }
-                        }
-                        else if (location == null)
-                        {
-                            if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize && item.Type.Equals(type))
-                            {
-                                items.Add(item);
-                            }
-                        }
-                        else
-                        {
-
-                            if (item.Price > startPrice && item.Price < endPrice && item.Size > startSize && item.Size < endSize && item.Location.Equals(location) && item.Type.Equals(type))
-                            {
-                                items.Add(item);
-                            }
-                        }
-                    }
-                return items;
-            }
-            catch (TargetInvocationException ex)
-            {
-                Console.WriteLine(ex.InnerException.Message);
-                return null;
-            }
-        }
-
-        public async Task<List<Listing>> GetFeaturedProperties(string type)
-        {
-            try
-            {
-                var button = (await client
-                    .Child("Listings")
-                    .OnceAsync<Listing>()).Select(item => new Listing()
-                    {
-                        Title = item.Object.Title,
-                        Price = item.Object.Price,
-                        Type = item.Object.Type,
-                        Featured = item.Object.Featured,
-                        Location = item.Object.Location
-                    });
-                List<Listing> items = new List<Listing>();
-                foreach (var item in button)
-                {
-                    if (type == null)
-                    {
-                        if (item.Featured.Equals("Yes"))
-                        {
-                            items.Add(item);
-                        }
-                    }
-                    if (item.Type.Equals(type) && item.Featured.Equals("Yes"))
-                    {
-                        items.Add(item);
-                    }
-                }
-                return items;
-            }
-            catch(TargetInvocationException ex)
-            {
-                Console.WriteLine(ex.InnerException.Message);
-                return null;
-            }
+            return listings;
         }
 
         public async Task<List<Listing>> GetListing(string title)
@@ -239,44 +91,6 @@ namespace Estately.Services
                     }
                 }
                 return items;
-        }
-
-        public async Task<List<Listing>> GetNearbyProperties(string type)
-        {
-            try
-            {
-                var button = (await client
-                    .Child("Listings")
-                    .OnceAsync<Listing>()).Select(item => new Listing()
-                    {
-                        Title = item.Object.Title,
-                        Price = item.Object.Price,
-                        Type = item.Object.Type,
-                        Featured = item.Object.Featured,
-                        Location = item.Object.Location
-                    });
-                List<Listing> items = new List<Listing>();
-                foreach (var item in button)
-                {
-                    if (type == null)
-                    {
-                        if (item.Featured.Equals("No"))
-                        {
-                            items.Add(item);
-                        }
-                    }
-                    if (item.Type.Equals(type) && item.Featured.Equals("No"))
-                    {
-                        items.Add(item);
-                    }
-                }
-                return items;
-            }
-            catch (TargetInvocationException ex)
-            {
-                Console.WriteLine(ex.InnerException.Message);
-                return null;
-            }
         }
     }
 }
