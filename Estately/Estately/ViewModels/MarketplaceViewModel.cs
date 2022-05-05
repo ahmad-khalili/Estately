@@ -9,22 +9,106 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Estately.Views;
+using System.Linq;
 
 namespace Estately.ViewModels
 {
-    public class MarketplaceViewModel
+    public class MarketplaceViewModel : BaseViewModel
     {
-        FirebaseDB services;
-        public string Title { get; set; }
+        readonly FirebaseDB services;
+
+        private string _title;
+        public new string Title
+        { 
+            get {
+                return _title;
+            } 
+            set {
+                _title = value;
+                OnPropertyChanged();
+                SearchListings(Title);
+            } 
+        }
         public string Description { get; set; }
         public double Price { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
+        private List<Listing> _featuredList;
+        private List<Listing> _nearbyList;
+        public List<Listing> FeaturedList
+        {
+            get {
+                return _featuredList;
+            }
+            set { _featuredList = value;
+                OnPropertyChanged();
+            }
+        }
+        public List<Listing> NearbyList
+        {
+            get
+            {
+                return _nearbyList;
+            }
+            set
+            {
+                _nearbyList = value;
+                OnPropertyChanged();
+            }
+        }
         public Command AddListingCommand { get; set; }
+        public Command AddButtonCommand {get; set; }
+        public Command AllCommand { get; set; }
+        public Command ForSaleCommand { get; set; }
+        public Command ForRentCommand { get; set; }
+        public Command FilterButtonCommand { get; set; }
+        public Command SearchCommand { get; set; }
+
         public MarketplaceViewModel()
         {
             services = new FirebaseDB();
+            GetListings();
             AddListingCommand = new Command(async () => await AddListing());
+            AllCommand = new Command(() => GetListings());
+            ForSaleCommand = new Command(() => GetSaleListings());
+            ForRentCommand = new Command(() => GetRentListings());
+            FilterButtonCommand = new Command(() => FilterButtonClicked());
+            AddButtonCommand = new Command(() => AddButtonClicked());
+            SearchCommand = new Command(() => SearchListings(Title));
+        }
+
+        public async void GetListings()
+        {
+            var featuredListings = (await services.GetListings())
+                .Where(listing => listing.Featured.Equals("Yes")).ToList();
+            var nearbyListings = (await services.GetListings())
+                .Where(listing => listing.Featured.Equals("No")).ToList();
+
+            FeaturedList = featuredListings;
+            NearbyList = nearbyListings;
+
+        }
+
+        public async void GetRentListings()
+        {
+            var featuredListings = (await services.GetListings())
+                .Where(listing => listing.Featured.Equals("Yes") && listing.Type.Equals("Rent")).ToList();
+            var nearbyListings = (await services.GetListings())
+                .Where(listing => listing.Featured.Equals("No") && listing.Type.Equals("Rent")).ToList();
+
+            FeaturedList = featuredListings;
+            NearbyList = nearbyListings;
+        }
+
+        public async void GetSaleListings()
+        {
+            var featuredListings = (await services.GetListings())
+                .Where(listing => listing.Featured.Equals("Yes") && listing.Type.Equals("Sale")).ToList();
+            var nearbyListings = (await services.GetListings())
+                .Where(listing => listing.Featured.Equals("No") && listing.Type.Equals("Sale")).ToList();
+
+            FeaturedList = featuredListings;
+            NearbyList = nearbyListings;
         }
 
         public async Task AddListing()
@@ -64,29 +148,30 @@ namespace Estately.ViewModels
 
         }
 
-        public async Task<List<Listing>> FeaturedListings(string type)
-        {
-            return await services.GetFeaturedProperties(type);
-        }
-
-        public async Task<List<Listing>> NearbyListings(string type)
-        {
-            return await services.GetNearbyProperties(type);
-        }
-
         public async Task<List<Listing>> GetItemListing(string title)
         {
             return await services.GetListing(title);
         }
 
-        public async Task<List<Listing>> SearchFeaturedListings(string title)
+        public void AddButtonClicked()
         {
-            return await services.SearchFeaturedListings(title);
+            App.Current.MainPage.Navigation.PushAsync(new NewListingPage());
         }
 
-        public async Task<List<Listing>> SearchNearbyListings(string title)
+        public void FilterButtonClicked()
         {
-            return await services.SearchNearbyListings(title);
+            App.Current.MainPage.Navigation.PushAsync(new FilterPage());
+        }
+
+        public void SearchListings(string title)
+        {
+            FeaturedList = FeaturedList
+                .Where(listing => listing.Title.Contains(title, System.StringComparison.CurrentCultureIgnoreCase) && listing.Featured.Equals("Yes"))
+                .ToList();
+
+            NearbyList = NearbyList
+                .Where(listing => listing.Title.Contains(title, System.StringComparison.CurrentCultureIgnoreCase) && listing.Featured.Equals("No"))
+                .ToList();
         }
     }
 }
