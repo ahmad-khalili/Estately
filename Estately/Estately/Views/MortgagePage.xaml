@@ -31,7 +31,7 @@
 
 
         <StackLayout VerticalOptions="End" Margin ="120,500,120,100"  >
-        <Button   Text="Calculate" BackgroundColor="#2874A6" TextColor="White" FontSize="16" FontAttributes="Bold" HeightRequest="55" WidthRequest="250" CornerRadius="15" Command="{Binding CalculateMortgage}"/>
+                <Button   Text="Calculate" Style="{StaticResource PrimaryButtonStyle}"  HeightRequest="55" WidthRequest="250"  Command="{Binding CalculateMortgage}"/>
 </StackLayout>
 
         </Grid>
