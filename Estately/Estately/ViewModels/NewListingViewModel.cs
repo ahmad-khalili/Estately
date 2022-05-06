@@ -22,8 +22,8 @@ namespace Estately.ViewModels
         public string Feature2 { get; set; }
         public string Feature3 { get; set; }
         public string Feature4 { get; set; }
-        public double Price;
-
+        public string Size { get; set; }
+        public string Price { get; set; }
         private string _image;
         public string Image {
             get
@@ -86,7 +86,19 @@ namespace Estately.ViewModels
             }
             else if (string.IsNullOrEmpty(Feature1))
             {
-                await App.Current.MainPage.DisplayAlert("Alert", "Please enter at least 1 feature", "Ok");
+                await App.Current.MainPage.DisplayAlert("Alert", "Please enter at Feature #1", "Ok");
+            }
+            else if (string.IsNullOrEmpty(Feature2))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please enter at Feature #2", "Ok");
+            }
+            else if (string.IsNullOrEmpty(Feature3))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please enter at Feature #3", "Ok");
+            }
+            else if (string.IsNullOrEmpty(Feature4))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please enter at Feature #4", "Ok");
             }
             else if (string.IsNullOrEmpty(Image))
             {
@@ -96,7 +108,7 @@ namespace Estately.ViewModels
             {
                 try
                 {
-                    var listing = new Listing { Title = Title, Description = Description, Price = Price, Type = Type, Location = Location, Featured = "No", Image = Image };
+                    var listing = new Listing { Title = Title, Description = Description, Price = double.Parse(Price), Type = Type, Location = Location, Size = double.Parse(Size),Featured = Featured, Feature1 = Feature1, Feature2 = Feature2, Feature3 = Feature3, Feature4 = Feature4, Image = Image };
                     await services.AddListing(listing);
                     await App.Current.MainPage.DisplayAlert("Success", Title + " Added", "Ok");
                     await Shell.Current.GoToAsync("..");

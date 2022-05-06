@@ -13,7 +13,6 @@ namespace Estately.Views
 {
     public partial class ListingPage : ContentPage
     {
-        Listing listing { get; set; }
         string title { get; set; }
         MarketplaceViewModel viewModel = new MarketplaceViewModel();
         public ListingPage(string title)
