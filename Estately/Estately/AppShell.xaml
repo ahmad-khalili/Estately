@@ -35,14 +35,14 @@
                 <FontImageSource Glyph="&#xe8d1;" FontFamily="MaterialIcons"/>
             </ShellContent.Icon>
         </ShellContent>
-        <ShellContent Title="Agent Finder" Route="AgentFinderPage" ContentTemplate="{DataTemplate local:AgentFinderPage}">
+        <ShellContent Title="Mortgage" Route="MortgagePage" ContentTemplate="{DataTemplate local:MortgagePage}">
             <ShellContent.Icon>
                 <FontImageSource Glyph="&#xe73a;" FontFamily="MaterialIcons"/>
             </ShellContent.Icon>
         </ShellContent>
-        <ShellContent Title="Notifications" Route="NotificationsPage" ContentTemplate="{DataTemplate local:NotificationsPage}">
+        <ShellContent Title="Renovation" Route="RenovationPage" ContentTemplate="{DataTemplate local:RennovationPage}">
             <ShellContent.Icon>
-                <FontImageSource Glyph="&#xe7f4;" FontFamily="MaterialIcons"/>
+                <FontImageSource Glyph="&#xf10b;" FontFamily="MaterialIcons"/>
             </ShellContent.Icon>
         </ShellContent>
         <ShellContent Title="More" Route="MoreTabsPage" ContentTemplate="{DataTemplate local:MoreTabsPage}">

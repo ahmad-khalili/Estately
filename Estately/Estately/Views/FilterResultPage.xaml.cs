@@ -18,5 +18,11 @@ namespace Estately.Views
             InitializeComponent();
             filteredListings.ItemsSource = listings;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//MarketplacePage");
+            return base.OnBackButtonPressed();
+        }
     }
 }

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.NewListingPage"
-             Title="NewListing">
+             Title="NewListing"
+             Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView>
             <Grid BackgroundColor="#e3f2fd">
@@ -26,9 +27,6 @@
 
                     <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Price" FontAttributes="Bold"/>
                     <Entry  Placeholder="e.g: 1000" Keyboard="Numeric" Text="{Binding Price}"/>
-                    
-                  
-
                 </StackLayout>
                 <StackLayout VerticalOptions="End" Margin ="120,550,120,0">
                     <Button Grid.Row="2"   Command="{Binding AddListingCommand}" Text="Create Listing" FontSize="16"  TextColor="White" FontAttributes="Bold" HeightRequest="55" WidthRequest="250" CornerRadius="15" BackgroundColor="#2874A6"/>
