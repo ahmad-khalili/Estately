@@ -6,7 +6,7 @@
              Title="Marketplace" >
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="AddButtonClicked">
+        <ToolbarItem Command="{Binding AddButtonCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;"/>
             </ToolbarItem.IconImageSource>
@@ -27,9 +27,9 @@
                 </Grid.ColumnDefinitions>
 
 
-                <SearchBar TextColor="black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0" BackgroundColor="#e3f2fd"/>
+                <SearchBar SearchCommand="{Binding SearchCommand}" Text="{Binding Title}" TextColor="black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0" BackgroundColor="#e3f2fd"/>
 
-                <ImageButton Clicked="FilterButtonClicked"  Margin="30,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#e3f2fd">
+                <ImageButton Command="{Binding FilterButtonCommand}" Margin="30,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#e3f2fd">
 
                     <ImageButton.Source>
                         <FontImageSource FontFamily="MaterialIcons" Size="30" Color="Black" Glyph="&#xe429;"/>
@@ -67,7 +67,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions >
                             <Label Grid.Row="0" Padding="0,0,0,5" Text="Featuerd Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#e3f2fd"/>
-                            <CarouselView Loop="True" x:Name="featuredList" Grid.Row="1">
+                            <CarouselView Loop="True" ItemsSource="{Binding FeaturedList}" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
                                         <views:ListingComponent/>
@@ -82,7 +82,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Padding="0,0,0,5" Text="Nearby Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#e3f2fd"/>
-                            <CarouselView Loop="True" x:Name="nearbyList" Grid.Row="1">
+                            <CarouselView Loop="True" HorizontalScrollBarVisibility="Always" ItemsSource="{Binding NearbyList}" Grid.Row="1">
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
                                         <views:ListingComponent/>
