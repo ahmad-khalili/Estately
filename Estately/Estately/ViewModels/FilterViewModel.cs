@@ -18,61 +18,116 @@ namespace Estately.ViewModels
     {
         private readonly FirebaseDB services;
 
-        public float MaxPrice { get; set; }
-        public float StartSize {get; set;}
-        public float EndSize {get; set;}
-        public string Location { get; set; }
-        public string Type { get; set; }
-        public Command FilterCommand { get; set; }
-        private List<Listing> _filteredlistings;
-        public List<Listing> FilteredListings
+        private float _maxprice;
+        public float MaxPrice 
         {
-            get { return _filteredlistings; }
-            set { _filteredlistings = value;
+            get
+            {
+                return _maxprice;
+            }
+            set
+            {
+                _maxprice = value;
                 OnPropertyChanged();
             }
         }
+        private float _startsize;
+        public float StartSize
+        {
+            get
+            {
+                return _startsize;
+            }
+            set
+            {
+                _startsize = value;
+                OnPropertyChanged();
+            }
+        }
+        private float _endsize;
+        public float EndSize
+        {
+            get
+            {
+                return _endsize;
+            }
+            set
+            {
+                _endsize = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _location;
+        public string Location
+        {
+            get
+            {
+                return _location;
+            }
+            set
+            {
+                _location = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _type;
+        public string Type
+        {
+            get
+            {
+                return _type;
+            }
+            set
+            {
+                _type = value;
+                OnPropertyChanged();
+            }
+        }
+        public Command FilterCommand { get; set; }
 
         public FilterViewModel()
         {
+            MaxPrice = 500000;
+            StartSize = 0;
+            EndSize = 100000;
+            Location = null;
+            Type = null;
             services = new FirebaseDB();
-            FilterCommand = new Command(() => FilterListings(MaxPrice, StartSize, EndSize, Location, Type));
+            FilterCommand = new Command(() => FilterListings());
         }
 
-        public async void FilterListings(float maxPrice, float startSize, float endSize, string location, string type)
+        public async void FilterListings()
         {
-            List<Listing> listingstoFilter = new List<Listing>();
-            if (location == null)
+            List<Listing> filteredListings = new List<Listing>();
+            if (Location == null && Type != null)
             {
-                listingstoFilter = (await services.GetListings())
-                .Where(listing => listing.Price <= maxPrice && listing.Size > startSize && listing.Size < endSize
-                && listing.Type.Equals(type))
+                filteredListings = (await services.GetListings())
+                .Where(listing => listing.Price <= MaxPrice && listing.Size > StartSize && listing.Size < EndSize
+                && listing.Type.Equals(Type))
                 .ToList();
             }
-            else if (type == null)
+            else if (Type == null && Location != null)
             {
-                listingstoFilter = (await services.GetListings())
-                .Where(listing => listing.Price <= maxPrice && listing.Size > startSize && listing.Size < endSize
-                && listing.Location.Equals(location))
+                filteredListings = (await services.GetListings())
+                .Where(listing => listing.Price <= MaxPrice && listing.Size > StartSize && listing.Size < EndSize
+                && listing.Location.Equals(Location))
                 .ToList();
             }
-            else if (type == null && location == null)
+            else if (Type == null && Location == null)
             {
-                listingstoFilter = (await services.GetListings())
-                .Where(listing => listing.Price <= maxPrice && listing.Size > startSize && listing.Size < endSize)
+                filteredListings = (await services.GetListings())
+                .Where(listing => listing.Price <= MaxPrice && listing.Size > StartSize && listing.Size < EndSize)
                 .ToList();
             }
             else
             {
-                listingstoFilter = (await services.GetListings())
-                .Where(listing => listing.Price <= maxPrice && listing.Size > startSize && listing.Size < endSize
-                && listing.Type.Equals(type) && listing.Location.Equals(location))
+                filteredListings = (await services.GetListings())
+                .Where(listing => listing.Price <= MaxPrice && listing.Size > StartSize && listing.Size < EndSize
+                && listing.Type.Equals(Type) && listing.Location.Equals(Location))
                 .ToList();
             }
 
-            FilteredListings = listingstoFilter;
-
-            await App.Current.MainPage.Navigation.PushAsync(new FilterResultPage(FilteredListings));
+            await App.Current.MainPage.Navigation.PushAsync(new FilterResultPage(filteredListings));
         }
     }
 }

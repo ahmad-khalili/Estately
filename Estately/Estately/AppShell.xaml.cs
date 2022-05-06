@@ -20,8 +20,6 @@ namespace Estately
             Routing.RegisterRoute(nameof(FilterResultPage), typeof(FilterResultPage));
             Routing.RegisterRoute(nameof(RennovationPage), typeof(RennovationPage));
             Routing.RegisterRoute(nameof(RenovationResults), typeof(RenovationResults));
-
-
         }
 
     }

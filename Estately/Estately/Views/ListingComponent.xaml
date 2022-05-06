@@ -12,7 +12,7 @@
            HeightRequest="200"
            VerticalOptions="CenterAndExpand"
            BackgroundColor="White">
-        <ImageButton Source="gs://estately-9a428.appspot.com/simple-house-exterior-white-background-illustration-195950905.jpg"
+        <ImageButton Source="{Binding Image}"
                      Aspect="Fill"
                      HeightRequest="150"
                      WidthRequest="400"

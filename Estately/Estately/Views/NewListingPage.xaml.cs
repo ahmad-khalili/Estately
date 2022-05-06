@@ -15,7 +15,7 @@ namespace Estately.Views
         public NewListingPage()
         {
             InitializeComponent();
-            BindingContext = new MarketplaceViewModel();
+            BindingContext = new NewListingViewModel();
             TypePicker.Items.Add("Sale");
             TypePicker.Items.Add("Rent");
         }

@@ -56,7 +56,6 @@ namespace Estately.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Command AddListingCommand { get; set; }
         public Command AddButtonCommand {get; set; }
         public Command AllCommand { get; set; }
         public Command ForSaleCommand { get; set; }
@@ -68,7 +67,6 @@ namespace Estately.ViewModels
         {
             services = new FirebaseDB();
             GetListings();
-            AddListingCommand = new Command(async () => await AddListing());
             AllCommand = new Command(() => GetListings());
             ForSaleCommand = new Command(() => GetSaleListings());
             ForRentCommand = new Command(() => GetRentListings());
@@ -109,43 +107,6 @@ namespace Estately.ViewModels
 
             FeaturedList = featuredListings;
             NearbyList = nearbyListings;
-        }
-
-        public async Task AddListing()
-        {
-            if (string.IsNullOrEmpty(Title))
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "Title is Empty!", "Ok");
-            }
-            else if (string.IsNullOrEmpty(Description))
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "Description is Empty!", "Ok");
-
-            }
-            else if (string.IsNullOrEmpty(Type))
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "Type is Empty!", "Ok");
-
-            }
-            else if (string.IsNullOrEmpty(Location))
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "Location is Empty!", "Ok");
-
-            }
-            else
-            {
-                try
-                {
-                    var listing = new Listing { Title = Title, Description = Description, Price = Price, Type = Type, Location = Location, Featured = "No" };
-                    await services.AddListing(listing);
-                    await App.Current.MainPage.DisplayAlert("Success", Title + " Added", "Ok");
-                }
-                catch (Exception ex)
-                {
-                    await App.Current.MainPage.DisplayAlert("Alert", "Incorrect or empty inputs", "Ok");
-                }
-            }
-
         }
 
         public async Task<List<Listing>> GetItemListing(string title)

@@ -8,15 +8,24 @@ using Firebase.Database.Query;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Reflection;
+using Firebase.Storage;
+using System.Net;
 
 namespace Estately.Services
 {
     public class FirebaseDB
     {
         readonly FirebaseClient client;
+        readonly FirebaseStorage bucket;
+        WebClient webClient;
 
         public FirebaseDB()
         {
+            webClient = new WebClient();
+            bucket = new FirebaseStorage("estately-9a428.appspot.com",
+                new FirebaseStorageOptions{
+                ThrowOnCancel = true
+            });
             client = new FirebaseClient("https://estately-9a428-default-rtdb.europe-west1.firebasedatabase.app/");
         }
         
@@ -58,7 +67,8 @@ namespace Estately.Services
                     Size = listing.Object.Size,
                     Location = listing.Object.Location,
                     Type = listing.Object.Type,
-                    Featured = listing.Object.Featured
+                    Featured = listing.Object.Featured,
+                    Image = listing.Object.Image
                 }).ToList();
 
             return listings;
