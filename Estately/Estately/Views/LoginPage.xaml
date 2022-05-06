@@ -26,16 +26,14 @@
                 <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
             </StackLayout>
 
-            <Label Text="Don't Have An Account?" Margin="30,555,0,0" />
-            <Label Text="Register Now" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="180,555,0,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NoAccountCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
+            <Label Text="Joined us before?" Margin="30,555,0,0" />
+            <Label Text="Register Now." TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="150,555,0,0"/>
 
             <StackLayout  Margin="50,590,30,10" >
-                <Button   x:Name="LoginButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9" FontAttributes="Bold"   Text="LOGIN" BackgroundColor="#2874A6 " CornerRadius="15"  HeightRequest="55" WidthRequest="250" Command="{Binding LoginCommand}" />
+                <Button   x:Name="LoginButton" Style="{StaticResource PrimaryButtonStyle}"  HorizontalOptions="Center"  Grid.Row="9"   Text="LOGIN"   HeightRequest="55" WidthRequest="250" Command="{Binding LoginCommand}" />
             </StackLayout>
+
+
 
 
         </Grid>
