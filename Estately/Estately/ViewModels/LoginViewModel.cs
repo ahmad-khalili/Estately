@@ -48,7 +48,7 @@ namespace Estately
                 }
                 catch (Exception ex)
                 {
-                    await App.Current.MainPage.DisplayAlert("Alert", "Incorrect Email or Password", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Alert", $"Incorrect Email or Password, {ex.Message}", "Ok");
                 }
 
             }
