@@ -11,31 +11,32 @@ namespace Estately.Views
 {
     public partial class RenovationResults : ContentPage
     {
-        public RenovationResults(string propartySize, string room1, string room2, string room3)
+        public RenovationResults(string propertyValue, string propartySize, double room1Value, double room2Value, double room3Value, 
+            string room1, string room2, string room3)
         {
             InitializeComponent();
 
-            PropartySize.Text = "m²" + propartySize;
-            Room1.Text = room1;
-            Room1.Text = room2;
-            Room1.Text = room2;
+            PropartySize.Text = propartySize + " m²";
+            Room1Label.Text = room1;
+            Room2Label.Text = room2;
+            Room3Label.Text = room3;
+            Room1Value.Text = room1Value.ToString() + " m²";
+            Room2Value.Text = room2Value.ToString() + " m²";
+            Room3Value.Text = room3Value.ToString() + " m²";
 
 
-            double price = double.Parse(propartySize);
-            double firstroom = double.Parse(room1);
-            double secondroom = double.Parse(room2);
-            double thirdroom = double.Parse(room3);
+            PropartyValue.Text = propertyValue + " $";
 
 
-            double equation1 = (firstroom * 10);
-            double equation2 = (secondroom * 10);
-            double equation3 = (thirdroom * 10);
+            double equation1 = (room1Value * 10);
+            double equation2 = (room2Value* 10);
+            double equation3 = (room3Value * 10);
             double equation4 = equation1 + equation2 + equation3;
 
 
             double renovationEquation = equation4;
 
-            Result.Text = renovationEquation.ToString() + "$";
+            Result.Text = renovationEquation.ToString() + " $";
         }
     }
 }

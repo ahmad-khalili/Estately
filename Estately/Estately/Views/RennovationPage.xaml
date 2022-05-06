@@ -28,7 +28,7 @@
 
                         <Grid >
                             <Label Text="Room 1" Margin="20,0,0,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                            <Picker  Grid.Row="0" Margin="20,20,2,0" Grid.Column="0" >
+                            <Picker  Grid.Row="0" Margin="20,20,2,0" Grid.Column="0" SelectedItem="{Binding Room1Name}">
                                 <Picker.Items>
                                     <x:String>Bathroom</x:String>
                                     <x:String>Bedroom</x:String>
@@ -38,12 +38,12 @@
                                     <x:String>Living Room</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Entry x:Name="room1" Margin="2,20,20,0"  Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small"  Text="{Binding Room1}" />
+                            <Entry x:Name="room1" Text="{Binding Room1Value}" Margin="2,20,20,0"  Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small"/>
                         </Grid>
 
                         <Grid >
                             <Label Text="Room 2" Margin="20,0,0,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                            <Picker  Grid.Row="0" Margin="20,20,2,0"  Grid.Column="0" >
+                            <Picker  Grid.Row="0" Margin="20,20,2,0"  Grid.Column="0" SelectedItem="{Binding Room2Name}">
                                 <Picker.Items>
                                     <x:String>Bathroom</x:String>
                                     <x:String>Bedroom</x:String>
@@ -53,12 +53,12 @@
                                     <x:String>Living Room</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Entry x:Name="room2" Margin="2,20,20,0"  Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small"  Text="{Binding Room2}" />
+                            <Entry x:Name="room2" Text="{Binding Room2Value}" Margin="2,20,20,0"  Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small"/>
                         </Grid>
 
                         <Grid >
                             <Label Text="Room 3" Margin="20,0,0,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                            <Picker  Grid.Row="0" Margin="20,20,2,0"  Grid.Column="0" >
+                            <Picker  Grid.Row="0" Margin="20,20,2,0"  Grid.Column="0" SelectedItem="{Binding Room3Name}">
                                 <Picker.Items>
                                     <x:String>Bathroom</x:String>
                                     <x:String>Bedroom</x:String>
@@ -68,7 +68,7 @@
                                     <x:String>Living Room</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Entry x:Name="room3" Margin="2,20,20,0" Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small" Text="{Binding Room3}" />
+                            <Entry x:Name="room3" Text="{Binding Room3Value}" Margin="2,20,20,0" Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small"/>
                         </Grid>
 
                     </StackLayout>
