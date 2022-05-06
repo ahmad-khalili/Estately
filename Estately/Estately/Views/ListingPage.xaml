@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.ListingPage"
              x:Name="page"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="#e3f2fd">
     <ContentPage.Content>
         <CollectionView x:Name="listingView">
             <CollectionView.ItemTemplate>

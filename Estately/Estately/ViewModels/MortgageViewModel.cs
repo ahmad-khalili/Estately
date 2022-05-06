@@ -5,10 +5,11 @@ using Xamarin.Forms;
 using Estately.Views;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using MvvmHelpers;
 
 namespace Estately.ViewModels
 {
-    public class MortgageViewModel
+    public class MortgageViewModel : BaseViewModel
     {
         public string HousePrice { get; set; }
         
@@ -16,12 +17,25 @@ namespace Estately.ViewModels
 
         public string Years { get; set; }
 
-        public string InterestRate { get; set; }
+        private double _interestrate;
+        public double InterestRate
+        {
+            get
+            {
+                return _interestrate;
+            }
+            set
+            {
+                _interestrate = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Command CalculateMortgage { get; set; }
 
         public MortgageViewModel()
         {
+            InterestRate = 1;
             CalculateMortgage = new Command(async () => await Calculate());
         }
 
@@ -39,13 +53,9 @@ namespace Estately.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "Down payment is empty!", "Ok");
             }
-            else if (string.IsNullOrEmpty(InterestRate))
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "Please choose the interest rate!", "Ok");
-            }
             else
             {
-                await App.Current.MainPage.Navigation.PushAsync(new MortgageResult(HousePrice, Years, DownPayment, "5"));
+                await App.Current.MainPage.Navigation.PushAsync(new MortgageResult(HousePrice, Years, DownPayment, InterestRate));
             }
         }
 

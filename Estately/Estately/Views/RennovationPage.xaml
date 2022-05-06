@@ -19,16 +19,16 @@
 
                         <StackLayout Padding="20" Spacing="2">
 
-                        <Label Text="Proparty size (m²) "  Margin="20,0,5,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"/>
+                        <Label Text="Property size (m²) "  Margin="20,0,5,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"/>
                             <Entry x:Name="entry2"  Margin="20,0,20,0"  Grid.Row="0"  Keyboard="Numeric" Text="{Binding PropartySize}"/>
 
-                            <Label Text="Proparty price ($) " Margin="20,0,5,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" />
+                            <Label Text="Property price ($) " Margin="20,0,5,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black" />
                             <Entry x:Name="entry3" Margin="20,0,20,10"  Grid.Row="1" Keyboard="Numeric" Text="{Binding PropartyValue}" />
 
 
                         <Grid >
                             <Label Text="Room 1" Margin="20,0,0,0" FontAttributes="Bold" FontSize="Subtitle" TextColor="Black"></Label>
-                            <Picker  Grid.Row="0" Margin="20,20,2,0"  Grid.Column="0" >
+                            <Picker  Grid.Row="0" Margin="20,20,2,0" Grid.Column="0" >
                                 <Picker.Items>
                                     <x:String>Bathroom</x:String>
                                     <x:String>Bedroom</x:String>
@@ -68,7 +68,7 @@
                                     <x:String>Living Room</x:String>
                                 </Picker.Items>
                             </Picker>
-                            <Entry x:Name="room3" Margin="2,20,20,0"  Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small" Text="{Binding Room3}" />
+                            <Entry x:Name="room3" Margin="2,20,20,0" Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="m²,1000" FontSize="Small" Text="{Binding Room3}" />
                         </Grid>
 
                     </StackLayout>

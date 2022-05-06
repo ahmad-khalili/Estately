@@ -12,21 +12,20 @@ namespace Estately.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MortgageResult : ContentPage
     {
-        public MortgageResult(string housePrice, string loanLength, string downPayment, string interestRate)
+        public MortgageResult(string housePrice, string loanLength, string downPayment, double interestRate)
         {
             InitializeComponent();
             
             HousePrice.Text = "$" + housePrice;
             DownPayment.Text = "$" + downPayment;
-            InterestRate.Text = "%" + interestRate;
+            InterestRate.Text = "%" + interestRate.ToString();
             LoanLength.Text = loanLength + " Years";
 
             double price = double.Parse(housePrice);
             double amount = double.Parse(loanLength);
             double payment = double.Parse(downPayment);
-            double rate = double.Parse(interestRate);
 
-            double i = ((rate / 100) / 12);
+            double i = ((interestRate / 100) / 12);
             double n = amount * 12;
 
             double equation1 = (i * Math.Pow((i + 1), n));

@@ -11,7 +11,6 @@ using System.Reflection;
 
 namespace Estately.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RennovationPage : ContentPage
     {
         public RennovationPage()
