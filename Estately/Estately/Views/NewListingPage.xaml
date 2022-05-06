@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.NewListingPage"
-             Title="NewListing"
-             Shell.TabBarIsVisible="False">
+             Title="NewListing">
     <ContentPage.Content>
         <ScrollView>
             <Grid BackgroundColor="#e3f2fd">
@@ -11,56 +10,30 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <StackLayout  Grid.Row="0" VerticalOptions="Start" Padding="5,0,5,0" Margin="20,50,20,0">
+                <StackLayout  Grid.Row="0" VerticalOptions="Start" Padding="5,0,5,0" Margin="20,90,20,0"  >
 
                     <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Enter property title" FontAttributes="Bold"/>
-                    <Entry Placeholder="e.g Corbyn House" Text="{Binding Title}"/>
+                    <Entry Placeholder="e.g: Noor's Property" Text="{Binding Title}"/>
 
                     <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Choose the type of property" FontAttributes="Bold"/>
-                    <Picker  x:Name="TypePicker" Title="Choose Type" SelectedItem="{Binding Type}"/>
-
-                    <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Enter Property's Size" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g ㎡ 1,300" Text="{Binding Size}"/>
+                    <Picker  x:Name="TypePicker" Title="Type" SelectedItem="{Binding Type}"/>
 
                     <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Enter Property Location" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g Ramallah, Al-Irsal Street" Text="{Binding Location}"/>
+                    <Entry  Placeholder="e.g: Tulkarm" Text="{Binding Location}"/>
 
                     <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter a description of your property" FontAttributes="Bold"/>
-                    <Editor 
-                        Placeholder="e.g Corbyn-style house with top-of-the-line electronices and furniture with an amazing and sun-reachable view" 
-                            HeightRequest="100" Text="{Binding Description}"/>
+                    <Entry  Placeholder="e.g: This property include beautiful view.. " Text="{Binding Description}"/>
 
                     <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Price" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g $1000" Keyboard="Numeric" Text="{Binding Price}"/>
+                    <Entry  Placeholder="e.g: 1000" Keyboard="Numeric" Text="{Binding Price}"/>
                     
-                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Feature #1" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g Fully-Equipped Gym Room" Text="{Binding Feature1}"/>
-
-                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Feature #2" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g Fully-Equipped Gym Room" Text="{Binding Feature2}"/>
-
-                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Feature #3" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g Fully-Equipped Gym Room" Text="{Binding Feature3}"/>
-
-                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Feature #4" FontAttributes="Bold"/>
-                    <Entry  Placeholder="e.g Fully-Equipped Gym Room" Text="{Binding Feature4}"/>
-
-                    <Button Grid.Row="0" Command="{Binding UploadCommand}" Text="Upload Photo" CornerRadius="15"/>
-
-                    <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Do You Want to Feature Your Listing?" FontAttributes="Bold"/>
-                    <Picker Title="Choose Answer" SelectedItem="{Binding Featured}">
-                        <Picker.Items>
-                            <x:String>Yes</x:String>
-                            <x:String>No</x:String>
-                        </Picker.Items>
-                    </Picker>
+                  
 
                 </StackLayout>
-                <StackLayout Grid.Row="1" VerticalOptions="End" Margin ="120,20,120,20">
-                    <Button Command="{Binding AddListingCommand}" Text="Create Listing" FontSize="16"  TextColor="White" FontAttributes="Bold" HeightRequest="55" WidthRequest="250" CornerRadius="15" BackgroundColor="#2874A6"/>
+                <StackLayout VerticalOptions="End" Margin ="120,550,120,0">
+                    <Button Grid.Row="2"   Command="{Binding AddListingCommand}" Text="Create Listing"  Style="{StaticResource PrimaryButtonStyle}" FontAttributes="Bold" HeightRequest="55" WidthRequest="250" />
     </StackLayout>
               </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
-
