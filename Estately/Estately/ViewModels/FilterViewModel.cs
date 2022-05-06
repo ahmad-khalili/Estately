@@ -84,6 +84,7 @@ namespace Estately.ViewModels
             }
         }
         public Command FilterCommand { get; set; }
+        public Command ClearCommand { get; set; }
 
         public FilterViewModel()
         {
@@ -94,6 +95,7 @@ namespace Estately.ViewModels
             Type = null;
             services = new FirebaseDB();
             FilterCommand = new Command(() => FilterListings());
+            ClearCommand = new Command(() => ClearPressed());
         }
 
         public async void FilterListings()
@@ -110,7 +112,7 @@ namespace Estately.ViewModels
             {
                 filteredListings = (await services.GetListings())
                 .Where(listing => listing.Price <= MaxPrice && listing.Size > StartSize && listing.Size < EndSize
-                && listing.Location.Equals(Location))
+                && listing.Location.Contains(Location, StringComparison.CurrentCultureIgnoreCase))
                 .ToList();
             }
             else if (Type == null && Location == null)
@@ -123,11 +125,20 @@ namespace Estately.ViewModels
             {
                 filteredListings = (await services.GetListings())
                 .Where(listing => listing.Price <= MaxPrice && listing.Size > StartSize && listing.Size < EndSize
-                && listing.Type.Equals(Type) && listing.Location.Equals(Location))
+                && listing.Type.Equals(Type) && listing.Location.Contains(Location, StringComparison.CurrentCultureIgnoreCase))
                 .ToList();
             }
 
             await App.Current.MainPage.Navigation.PushAsync(new FilterResultPage(filteredListings));
+        }
+
+        public void ClearPressed()
+        {
+            Type = null;
+            Location = null;
+            MaxPrice = 500000;
+            StartSize = 0;
+            EndSize = 100000;
         }
     }
 }

@@ -27,5 +27,11 @@ namespace Estately.Views
             page.Title = title;
             listingView.ItemsSource = await viewModel.GetItemListing(title);
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//MarketplacePage");
+            return base.OnBackButtonPressed();
+        }
     }
 }

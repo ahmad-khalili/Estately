@@ -99,6 +99,7 @@ namespace Estately.ViewModels
                     var listing = new Listing { Title = Title, Description = Description, Price = Price, Type = Type, Location = Location, Featured = "No", Image = Image };
                     await services.AddListing(listing);
                     await App.Current.MainPage.DisplayAlert("Success", Title + " Added", "Ok");
+                    await Shell.Current.GoToAsync("..");
                 }
                 catch (Exception ex)
                 {

@@ -21,6 +21,5 @@ namespace Estately
             Routing.RegisterRoute(nameof(RennovationPage), typeof(RennovationPage));
             Routing.RegisterRoute(nameof(RenovationResults), typeof(RenovationResults));
         }
-
     }
 }
