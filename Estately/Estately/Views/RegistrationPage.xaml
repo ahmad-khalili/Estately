@@ -24,9 +24,13 @@
                 <Entry   x:Name="ConformPasswordEntry"  Grid.Row="2" Text="{Binding Password}" Placeholder="Confirm Password" IsPassword="True"/>
             </StackLayout>  
             
-            <Label Text="Joined us before?" Margin="30,555,0,0" />
-            <Label Text="Login" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="150,555,0,0"/>
-            
+            <Label Text="Already Have an Account?" Margin="30,555,0,0" />
+            <Label Text="Login Now" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="195,555,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AlreadyUserCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
             <StackLayout  Margin="50,590,30,10" >
                 <Button   x:Name="UserRegistrationButton" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="Center"  Grid.Row="9"  Text="Register Now"    HeightRequest="55" WidthRequest="250"   Command="{Binding RegisterCommand}"/>
                 </StackLayout>
