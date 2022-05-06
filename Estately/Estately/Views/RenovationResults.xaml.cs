@@ -15,7 +15,7 @@ namespace Estately.Views
         {
             InitializeComponent();
 
-            PropartySize.Text = "Metres" + propartySize;
+            PropartySize.Text = "m²" + propartySize;
             Room1.Text = room1;
             Room1.Text = room2;
             Room1.Text = room2;
