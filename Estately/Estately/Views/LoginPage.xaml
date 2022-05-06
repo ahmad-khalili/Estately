@@ -17,7 +17,7 @@
             </Grid.RowDefinitions>
 
             <StackLayout>
-                <Image Source="Logo.png"  HorizontalOptions="CenterAndExpand" WidthRequest="1500" Margin="0,0,0,1000" />
+                <Image Source="https://i.ibb.co/mD6vYkv/279042484-420430702781272-6838196675858232007-n.png"  HorizontalOptions="CenterAndExpand" HeightRequest="450" WidthRequest="1500" Margin="0,0,0,1000" />
             </StackLayout>
             <Label Text="Login" FontSize="Large" FontAttributes="Bold" Margin="50,370,0,0"  TextColor="Black"/>
 
