@@ -18,11 +18,6 @@
                      WidthRequest="400"
                      HorizontalOptions="Center" />
     </Frame>
-    <ImageButton Command="{Binding FavoriteListingCommand}" x:Name="FavoriteButton" BackgroundColor="White" Padding="5,0,0,0" HorizontalOptions="Start" VerticalOptions="Start">
-        <ImageButton.Source>
-            <FontImageSource x:Name="FavoriteIconSource" Color="{StaticResource Primary}" FontFamily="MaterialIcons" Glyph="&#xe87d;" Size="25"/>
-        </ImageButton.Source>
-    </ImageButton>
     <Label TextColor="{StaticResource Primary}" Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold"/>
     <Grid Grid.Row="1">
         <Grid.GestureRecognizers>

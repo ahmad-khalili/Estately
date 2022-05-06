@@ -111,7 +111,8 @@ namespace Estately.ViewModels
 
         public async Task<List<Listing>> GetItemListing(string title)
         {
-            return await services.GetListing(title);
+            var listingToGet = (await services.GetListings()).Where(listing => listing.Title.Equals(title)).ToList();
+            return listingToGet;
         }
 
         public void AddButtonClicked()

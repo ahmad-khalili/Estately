@@ -17,11 +17,12 @@ namespace Estately.Services
     {
         readonly FirebaseClient client;
         readonly FirebaseStorage bucket;
-        WebClient webClient;
+        Listing emptyListing = new Listing();
+        List<Listing> emptyList = new List<Listing> ();
 
         public FirebaseDB()
         {
-            webClient = new WebClient();
+            emptyList.Add(emptyListing);
             bucket = new FirebaseStorage("estately-9a428.appspot.com",
                 new FirebaseStorageOptions{
                 ThrowOnCancel = true
@@ -31,76 +32,87 @@ namespace Estately.Services
         
         public async Task AddListing(Listing listing)
         {
-            await client.Child("Listings").PostAsync(listing);
+            try
+            {
+                await client.Child("Listings").PostAsync(listing);
+            }
+            catch (FirebaseException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error In Adding The Listing", ex.Message, "Ok");
+            }
         }
 
         public async Task UpdateListing(Listing listing)
         {
-            var toUpdateListing = (await client
-                .Child("Listings")
-                .OnceAsync<Listing>()).FirstOrDefault
-                (a => a.Object.Title == listing.Title && a.Object.Description == listing.Description);
+            try
+            {
+                var toUpdateListing = (await client
+                    .Child("Listings")
+                    .OnceAsync<Listing>()).FirstOrDefault
+                    (a => a.Object.Title == listing.Title && a.Object.Description == listing.Description);
 
-            Listing updatedListing = listing;
-            await client
-                .Child("Listings")
-                .Child(toUpdateListing.Key)
-                .PutAsync(updatedListing);
+                Listing updatedListing = listing;
+                await client
+                    .Child("Listings")
+                    .Child(toUpdateListing.Key)
+                    .PutAsync(updatedListing);
+            }
+            catch (FirebaseException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", $"Listing Not Found, {ex.Message}", "Ok");
+            }
         }
 
         public async Task DeleteListing(Listing listing)
         {
-            var toDeleteListing = (await client
-                .Child("Listings")
-                .OnceAsync<Listing>()).FirstOrDefault
-                (a => a.Object.Title == listing.Title && a.Object.Description == listing.Description);
-            await client.Child("Listings").Child(toDeleteListing.Key).DeleteAsync();
-        }
-
-        public async Task<List<Listing>> GetListings() { 
-            var listings = (await client
-                .Child("Listings")
-                .OnceAsync<Listing>()).Select(listing => new Listing {
-                    Title = listing.Object.Title,
-                    Description = listing.Object.Description,
-                    Price = listing.Object.Price,
-                    Size = listing.Object.Size,
-                    Location = listing.Object.Location,
-                    Type = listing.Object.Type,
-                    Featured = listing.Object.Featured,
-                    Image = listing.Object.Image
-                }).ToList();
-
-            return listings;
-        }
-
-        public async Task<List<Listing>> GetListing(string title)
-        {
-            var listingToGet = (await client
-                .Child("Listings")
-                .OnceAsync<Listing>()).Select(item => new Listing()
-                {
-                    Title = item.Object.Title,
-                    Price = item.Object.Price,
-                    Type = item.Object.Type,
-                    Location = item.Object.Location,
-                    Description = item.Object.Description,
-                    Size = item.Object.Size,
-                    Feature1 = item.Object.Feature1,
-                    Feature2 = item.Object.Feature2,
-                    Feature3 = item.Object.Feature3,
-                    Feature4 = item.Object.Feature4, 
-                });
-            List<Listing> items = new List<Listing>();
-
-            foreach(var item in listingToGet)
+            try
             {
-                    if (item.Title.Equals(title))
+                var toDeleteListing = (await client
+                    .Child("Listings")
+                    .OnceAsync<Listing>()).FirstOrDefault
+                    (a => a.Object.Title == listing.Title && a.Object.Description == listing.Description);
+                await client.Child("Listings").Child(toDeleteListing.Key).DeleteAsync();
+            }
+            catch (FirebaseException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", $"Listing Not Found, {ex.Message}", "Ok");
+            }
+        }
+
+        public async Task<List<Listing>> GetListings()
+        {
+            try
+            {
+                var listings = (await client
+                    .Child("Listings")
+                    .OnceAsync<Listing>()).Select(listing => new Listing
                     {
-                        items.Add(item);
-                    }
-                }
-                return items;
+                        Title = listing.Object.Title,
+                        Description = listing.Object.Description,
+                        Price = listing.Object.Price,
+                        Size = listing.Object.Size,
+                        Location = listing.Object.Location,
+                        Type = listing.Object.Type,
+                        Featured = listing.Object.Featured,
+                        Feature1 = listing.Object.Feature1,
+                        Feature2 = listing.Object.Feature2,
+                        Feature3 = listing.Object.Feature3,
+                        Feature4 = listing.Object.Feature4,
+                        Image = listing.Object.Image
+                    }).ToList();
+
+                return listings;
+            }
+            catch (FirebaseException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
+                return emptyList;
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
+                return emptyList;
+            }
         }
     }
 }
