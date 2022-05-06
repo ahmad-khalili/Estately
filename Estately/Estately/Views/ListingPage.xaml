@@ -24,12 +24,10 @@
                      WidthRequest="400"
                      HorizontalOptions="Center" />
                         </Frame>
-                        <Label Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold"/>
-                        <Grid Grid.Row="1">
+                        <Label Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold" FontAttributes="Bold" TextColor="#2E4053"/>
+                       <Grid Grid.Row="1">
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -41,38 +39,33 @@
                             </Grid.RowDefinitions>
 
 
-                            <Label x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Row="0" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                            <Label x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Row="0" FontSize="20" FontAttributes="Bold" TextColor="#2E4053"/>
 
-                            <Label Text="{Binding Price, StringFormat='${0:n}'}" Grid.Row="0" Padding="270,0,0,0" FontSize="17" FontAttributes="Bold" TextColor="Black"/>
-                            <Label Text="Price" Grid.Row="0" FontAttributes="Bold" Padding="270,20,0,0"/>
+                            <Label Text="{Binding Price, StringFormat='${0:n}'}" Grid.Row="0" HorizontalOptions="EndAndExpand" Padding="0,0,5,0" FontSize="17" FontAttributes="Bold" TextColor="#2E4053"/>
 
-                            <Label Text="Information: " TextColor="Black" FontSize="22" Grid.Row="2" Padding="10,0,0,0" FontAttributes="Bold"/>
+                            <Label Text="{Binding Location}" Grid.Row="1" FontSize="15" Margin="10,0,0,0" TextColor="#2E4053"/>
 
-                            <Label Text="Location:" Grid.Row="3" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="20,0,0,0"/>
-                            <Label Text="{Binding Location}" Grid.Row="3" FontSize="15" Padding="100,3,0,0" TextColor="Black"/>
+                            <Label Text="{Binding Size, StringFormat='{0:n} m²'}" Grid.Row="2" FontSize="15" TextColor="#2E4053" Margin="10,0,0,0"/>
 
-                            <Label Text="Description:" Grid.Row="4" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="20,0,0,0"/>
-                            <Label Text="{Binding Description}" Grid.Row="4"  FontSize="15" TextColor="Black" Padding="120,3,0,0"/>
 
-                            <Label Text="Size:" Grid.Row="5" FontAttributes="Bold" FontSize="18" TextColor="Black" Padding="20,0,0,0"/>
-                            <Label Text="{Binding Size}" Grid.Row="5"  FontSize="15" TextColor="Black" Padding="60,3,0,0"/>
+                            <Label Text="Description:" Grid.Row="4" FontAttributes="Bold" FontSize="18" TextColor="#2E4053" Padding="10,0,0,0"/>
+                            <Frame Grid.Row="4" BorderColor="Gray" CornerRadius="5" HasShadow="True" Margin="10,25,10,0" BackgroundColor="#e3f2fd">
+                                <Label Text="{Binding Description}" FontSize="15" TextColor="Black"/>
+                            </Frame>
 
-                            <BoxView Grid.Row="6" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Black"/>
+                            <Label Grid.Row="7" Text="Features: " TextColor="#2E4053" FontSize="22" Padding="10,0,0,0" FontAttributes="Bold"/>
 
-                            <Label Text="Features: " TextColor="Black" FontSize="22" Grid.Row="7" Padding="10,0,0,0" FontAttributes="Bold"/>
+                            <Label Grid.Row="8" Text="&#x2022;" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Grid.Row="8" Text="{Binding Feature1}" FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
-                            <Label Text="&#x2022;" Grid.Row="8" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature1}" Grid.Row="8"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
+                            <Label Grid.Row="9" Text="&#x2022;" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Grid.Row="9" Text="{Binding Feature2}" FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
-                            <Label Text="&#x2022;" Grid.Row="9" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature2}" Grid.Row="9"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
+                            <Label Grid.Row="10" Text="&#x2022;" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Grid.Row="10" Text="{Binding Feature3}" FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
 
-                            <Label Text="&#x2022;" Grid.Row="10" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature3}" Grid.Row="10"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
-
-                            <Label Text="&#x2022;" Grid.Row="11" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
-                            <Label Text="{Binding Feature4}" Grid.Row="11"  FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
-
+                            <Label Grid.Row="11" Text="&#x2022;" FontAttributes="Bold" FontSize="30" TextColor="Black" Padding="10,0,0,0"/>
+                            <Label Grid.Row="11" Text="{Binding Feature4}" FontSize="15" TextColor="Black" Padding="25,10,10,0"/>
                         </Grid>
                     </Grid>
                 </DataTemplate>

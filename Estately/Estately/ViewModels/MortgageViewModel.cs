@@ -27,7 +27,26 @@ namespace Estately.ViewModels
 
         public async Task Calculate()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new MortgageResult(HousePrice, Years, DownPayment, "5"));
+            if (string.IsNullOrEmpty(HousePrice))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Property value is empty!", "Ok");
+            }
+            else if (string.IsNullOrEmpty(Years))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please choose the length of loan!", "Ok");
+            }
+            else if (string.IsNullOrEmpty(DownPayment))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Down payment is empty!", "Ok");
+            }
+            else if (string.IsNullOrEmpty(InterestRate))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please choose the interest rate!", "Ok");
+            }
+            else
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new MortgageResult(HousePrice, Years, DownPayment, "5"));
+            }
         }
 
     }
