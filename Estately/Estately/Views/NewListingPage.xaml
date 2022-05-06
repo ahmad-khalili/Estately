@@ -45,6 +45,8 @@
                     <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Feature #4" FontAttributes="Bold"/>
                     <Entry  Placeholder="e.g: Fully-Equipped Gym Room" Text="{Binding Feature4}"/>
 
+                    <Button Grid.Row="0" TextColor="White" Command="{Binding UploadCommand}" Text="Upload Photo" BackgroundColor="{StaticResource Primary}" Margin="10,0,10,0" CornerRadius="30"/>
+                    
                     <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Do You Want to Feature Your Listing?" FontAttributes="Bold"/>
                     <Picker Title="Choose Answer" SelectedItem="{Binding Featured}">
                         <Picker.Items>
@@ -52,8 +54,6 @@
                             <x:String>No</x:String>
                         </Picker.Items>
                     </Picker>
-                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Upload Photo" FontAttributes="Bold"/>
-                    <Button Grid.Row="0" Command="{Binding UploadCommand}" Text="Upload Photo" Margin="10,0,10,0" CornerRadius="30"/>
 
                 </StackLayout>
                 <StackLayout Grid.Row="1" VerticalOptions="End" Margin ="120,20,120,20">
