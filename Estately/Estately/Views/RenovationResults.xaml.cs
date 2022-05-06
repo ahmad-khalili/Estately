@@ -15,7 +15,7 @@ namespace Estately.Views
         {
             InitializeComponent();
 
-            PropartySize.Text = "sq.ft." + propartySize;
+            PropartySize.Text = "m²" + propartySize;
             Room1.Text = room1;
             Room1.Text = room2;
             Room1.Text = room2;
@@ -31,7 +31,6 @@ namespace Estately.Views
             double equation2 = (secondroom * 10);
             double equation3 = (thirdroom * 10);
             double equation4 = equation1 + equation2 + equation3;
-
 
 
             double renovationEquation = equation4;

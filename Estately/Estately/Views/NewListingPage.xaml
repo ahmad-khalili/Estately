@@ -6,46 +6,33 @@
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
+            <Grid BackgroundColor="#e3f2fd">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Label Text="Please Add Information " TextColor="#2E4053" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,30,0,0" />
-                <StackLayout Grid.Row="0" VerticalOptions="Center" Padding="5,0,5,0" Margin="20,0,20,150" >
 
-                    <Frame BackgroundColor="#D6EAF8" CornerRadius="15">
-                        <StackLayout>
-                    <Label Text="Enter Property's Title" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,10,0,10" Placeholder="e.g Corbyn House" Text="{Binding Title}"/>
-                    <Label Text="Choose Property's Sale Type" FontAttributes="Bold" FontSize="Medium"/>
-                    <Picker Margin="0,0,0,10" x:Name="TypePicker" Title="Choose Type" SelectedItem="{Binding Type}"/>
-                    <Label Text="Enter Property's Location" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,0,0,10" Placeholder="e.g Ramallah, Al-Irsal Street" Text="{Binding Location}"/>
-                    <Label Text="Enter a Description of Your Property" FontAttributes="Bold" FontSize="Medium"/>
-                    <Editor Margin="0,0,0,10" 
-                           Placeholder="e.g It's a well-equipped, modern-looking 
-                           Corbyn house with a beautiful view and top-of-the-line electronics and furniture"
-                           HeightRequest="140" Text="{Binding Description}"/>
-                    <Label Text="Enter Asking Price" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,0,0,10" Placeholder="e.g $150,000" Keyboard="Numeric" Text="{Binding Price}"/>
-                    <Label Text="Enter Feature #1" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,0,0,10" Placeholder="Fully-equipped Gym" Text="{Binding Feature1}"/>
-                    <Label Text="Enter Feature #2" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,0,0,10" Placeholder="Fully-equipped Gym" Text="{Binding Feature2}"/>
-                    <Label Text="Enter Feature #3" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,0,0,10" Placeholder="Fully-equipped Gym" Text="{Binding Feature3}"/>
-                    <Label Text="Enter Feature #4" FontAttributes="Bold" FontSize="Medium"/>
-                    <Entry Margin="0,0,0,10" Placeholder="Fully-equipped Gym" Text="{Binding Feature4}"/>
-                    <Button Text="Upload Photo" CornerRadius="15" Command="{Binding UploadCommand}"/>
-                        </StackLayout>    
-                     </Frame>
-                
+                <StackLayout  Grid.Row="0" VerticalOptions="Start" Padding="5,0,5,0" Margin="20,90,20,0"  >
+
+                    <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Enter property title" FontAttributes="Bold"/>
+                    <Entry Placeholder="e.g: Noor's Property" Text="{Binding Title}"/>
+
+                    <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Choose the type of property" FontAttributes="Bold"/>
+                    <Picker  x:Name="TypePicker" Title="Type" SelectedItem="{Binding Type}"/>
+
+                    <Label Grid.Row="0"   FontSize="18" TextColor="#2E4053" Text="Enter Property Location" FontAttributes="Bold"/>
+                    <Entry  Placeholder="e.g: Tulkarm" Text="{Binding Location}"/>
+
+                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter a description of your property" FontAttributes="Bold"/>
+                    <Entry  Placeholder="e.g: This property include beautiful view.. " Text="{Binding Description}"/>
+
+                    <Label Grid.Row="0"  FontSize="18" TextColor="#2E4053" Text="Enter Price" FontAttributes="Bold"/>
+                    <Entry  Placeholder="e.g: 1000" Keyboard="Numeric" Text="{Binding Price}"/>
                 </StackLayout>
-                <StackLayout VerticalOptions="End" Margin="0,500,0,0" >
-                       
-                    <Button Grid.Row="2" Margin="70,80,70,30" Command="{Binding AddListingCommand}" Text="Create Listing" CornerRadius="15" BackgroundColor="#2874A6"/>
-                </StackLayout>
-            </Grid>
+                <StackLayout VerticalOptions="End" Margin ="120,550,120,0">
+                    <Button Grid.Row="2"   Command="{Binding AddListingCommand}" Text="Create Listing" FontSize="16"  TextColor="White" FontAttributes="Bold" HeightRequest="55" WidthRequest="250" CornerRadius="15" BackgroundColor="#2874A6"/>
+    </StackLayout>
+              </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+

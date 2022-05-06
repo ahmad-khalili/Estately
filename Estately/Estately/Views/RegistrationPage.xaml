@@ -4,10 +4,8 @@
              x:Class="Estately.Views.RegistrationPage"
              Title="Register An Account">
     <ContentPage.Content>
-        <Grid VerticalOptions="Center" BackgroundColor="#e3f2fd">
-
+        <Grid VerticalOptions="Center" BackgroundColor="#e3f2fd" >
             <Grid.RowDefinitions>
-
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -15,37 +13,25 @@
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <StackLayout  Grid.Row="0" Padding="5,0,5,0" VerticalOptions="Center" Margin="20,10,10,300">
-                <Label Text="Estatly" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,0,0,0" HorizontalOptions="Center" />
-         
-                <Label Text="-----------------------------------------------------------------" TextColor="Black" FontSize="Large" Margin="10,0,10,350" HorizontalOptions="Center"/>
+            <StackLayout>
+                <Image Source="Logo.png"  HorizontalOptions="CenterAndExpand" WidthRequest="1500" Margin="0,0,0,1000" />
             </StackLayout>
+            <Label Text="Sign up" FontSize="Large" FontAttributes="Bold" Margin="50,350,0,0"  TextColor="Black"/>
 
-            <Label Text="Singup" TextColor="Black" FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Center"  Margin="0,80,0,0"/>
-            <Label Text="Welcome to join us, please Create a New Acount!" TextColor ="	#808080" FontSize="Header" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" Margin="0,130,70,20"/>
-            <Image Source="Blue Real Estate Logo.png"></Image>
-            <StackLayout  Margin="90,200,120,0">
-                <Frame CornerRadius="20" VerticalOptions="Center"  HeightRequest="39"  WidthRequest="0"  BackgroundColor="white">
-                    <Entry  x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email " WidthRequest="10" HeightRequest="20" Keyboard="Email" TextColor="Black"/>
-                </Frame>
-            </StackLayout>
-
-            <StackLayout  Margin="90,300,120,0">
-                <Frame CornerRadius="20" VerticalOptions="Center" HeightRequest="39"  WidthRequest="0"  BackgroundColor="White">
-                    <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
-                </Frame>
-            </StackLayout>
-            <StackLayout  Margin="90,400,120,0">
-                <Frame HeightRequest="39" WidthRequest="0" CornerRadius="20" VerticalOptions="Center"  BackgroundColor="White">
-                    <Entry   x:Name="ConformPasswordEntry"  Grid.Row="2" Text="{Binding Password}" Placeholder="Confirm Password" IsPassword="True"/>
-                </Frame>
-            </StackLayout>
-
-
-            <StackLayout VerticalOptions="End" Margin="0,500,0,0">
-                <Button  Margin ="90,0,120,100"  x:Name="UserRegistrationButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9"  Text="Register Now" BackgroundColor="#2874A6 " CornerRadius="20"  HeightRequest="55" WidthRequest="250"   Command="{Binding RegisterCommand}"/>
-            </StackLayout>
-
+            <StackLayout Margin="50,400,30,10">
+                <Entry  x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email"   Keyboard="Email" TextColor="Black"/>
+                <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
+                <Entry   x:Name="ConformPasswordEntry"  Grid.Row="2" Text="{Binding Password}" Placeholder="Confirm Password" IsPassword="True"/>
+            </StackLayout>  
+            
+            <Label Text="Joined us before?" Margin="30,555,0,0" />
+            <Label Text="Login" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="150,555,0,0"/>
+            
+            <StackLayout  Margin="50,590,30,10" >
+                <Button   x:Name="UserRegistrationButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9" FontAttributes="Bold"  Text="Register Now" BackgroundColor="#2874A6 " CornerRadius="15"  HeightRequest="55" WidthRequest="250"   Command="{Binding RegisterCommand}"/>
+                </StackLayout>
+      
+    
         </Grid>
     </ContentPage.Content>
 </ContentPage>
