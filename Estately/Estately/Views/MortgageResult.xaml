@@ -6,8 +6,7 @@
              Title="Mortage Results">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#e3f2fd">
-             <Label Text="Estimated Value" 
-                HorizontalOptions="CenterAndExpand" FontSize="26" TextColor="#2E4053" FontAttributes="Bold" Margin="20"/>
+        
 
             <Label Text="Total Monthly Payment" 
                 HorizontalOptions="CenterAndExpand" FontSize="24" TextColor="#2E4053" FontAttributes="Bold" Margin="0,40,0,0" />

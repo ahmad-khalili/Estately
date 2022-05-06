@@ -5,8 +5,7 @@
              Title= "Renovation Results">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#e3f2fd">
-            <Label Text="Estimated Value" HorizontalOptions="CenterAndExpand" Margin="30,40,30,0" FontSize="26" TextColor="#2E4053" FontAttributes="Bold" />
-
+       
             <Label Text="Total Monthly Payment" HorizontalOptions="CenterAndExpand" FontSize="24" TextColor="#2E4053" FontAttributes="Bold" Margin="0,35,0,0" />
             <Label x:Name="Result" Text="House Price: " FontAttributes="Bold" TextColor="#2E4053" FontSize="24" HorizontalOptions="Center"/>
 
