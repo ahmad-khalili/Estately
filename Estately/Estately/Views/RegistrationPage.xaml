@@ -25,14 +25,10 @@
             </StackLayout>  
             
             <Label Text="Joined us before?" Margin="30,555,0,0" />
-            <Label Text="Login Now" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="145,555,0,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AlreadyUserCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-
+            <Label Text="Login" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="150,555,0,0"/>
+            
             <StackLayout  Margin="50,590,30,10" >
-                <Button   x:Name="UserRegistrationButton"  HorizontalOptions="Center" FontSize="16" Grid.Row="9" FontAttributes="Bold"  Text="Register Now" BackgroundColor="#2874A6 " CornerRadius="15"  HeightRequest="55" WidthRequest="250"   Command="{Binding RegisterCommand}"/>
+                <Button   x:Name="UserRegistrationButton" Style="{StaticResource PrimaryButtonStyle}" HorizontalOptions="Center"  Grid.Row="9"  Text="Register Now"    HeightRequest="55" WidthRequest="250"   Command="{Binding RegisterCommand}"/>
                 </StackLayout>
       
     
