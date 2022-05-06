@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Estately.Views;
 
 namespace Estately
 {
@@ -21,6 +22,7 @@ namespace Estately
 
         public string Email { get; set; }
         public string Password { get; set; }
+        public Command NoAccountCommand { get; set; }
 
         public async Task LoginUser()
         {
@@ -59,13 +61,18 @@ namespace Estately
         }*/
 
         public ICommand LoginCommand { get; set; }
-        public Command NoAccountCommand { get; set; }
 
 
         public LoginPageViewModel()
         {
             LoginCommand = new Command(async () => await LoginUser());
+            NoAccountCommand = new Command(() => NoAccountPressed());
             //NoAccountCommand = new Command(async () => await NavigateToRegister());
+        }
+
+        public void NoAccountPressed()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new RegistrationPage());
         }
 
     }

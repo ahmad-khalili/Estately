@@ -35,6 +35,45 @@ namespace Estately.ViewModels
         public string Location { get; set; }
         private List<Listing> _featuredList;
         private List<Listing> _nearbyList;
+        private Color _salecolor;
+        public Color SaleColor
+        {
+            get
+            {
+                return _salecolor;
+            }
+            set
+            {
+                _salecolor = value;
+                OnPropertyChanged();
+            }
+        }
+        private Color _rentcolor;
+        public Color RentColor
+        {
+            get
+            {
+                return _rentcolor;
+            }
+            set
+            {
+                _rentcolor = value;
+                OnPropertyChanged();
+            }
+        }
+        private Color _allcolor;
+        public Color AllColor
+        {
+            get
+            {
+                return _allcolor;
+            }
+            set
+            {
+                _allcolor = value;
+                OnPropertyChanged();
+            }
+        }
         public List<Listing> FeaturedList
         {
             get {
@@ -77,6 +116,9 @@ namespace Estately.ViewModels
 
         public async void GetListings()
         {
+            AllColor = Color.FromHex("#2874a6");
+            SaleColor = Color.FromHex("#61a2d8");
+            RentColor = Color.FromHex("#61a2d8");
             var featuredListings = (await services.GetListings())
                 .Where(listing => listing.Featured.Equals("Yes")).ToList();
             var nearbyListings = (await services.GetListings())
@@ -89,6 +131,9 @@ namespace Estately.ViewModels
 
         public async void GetRentListings()
         {
+            AllColor = Color.FromHex("#61a2d8");
+            SaleColor = Color.FromHex("#61a2d8");
+            RentColor = Color.FromHex("#2874a6");
             var featuredListings = (await services.GetListings())
                 .Where(listing => listing.Featured.Equals("Yes") && listing.Type.Equals("Rent")).ToList();
             var nearbyListings = (await services.GetListings())
@@ -100,6 +145,9 @@ namespace Estately.ViewModels
 
         public async void GetSaleListings()
         {
+            AllColor = Color.FromHex("#61a2d8");
+            SaleColor = Color.FromHex("#2874a6");
+            RentColor = Color.FromHex("#61a2d8");
             var featuredListings = (await services.GetListings())
                 .Where(listing => listing.Featured.Equals("Yes") && listing.Type.Equals("Sale")).ToList();
             var nearbyListings = (await services.GetListings())

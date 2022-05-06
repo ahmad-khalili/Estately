@@ -16,6 +16,12 @@ namespace Estately.Views
             InitializeComponent();
             BindingContext = new RegistrationViewModel();
         }
-       
+
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//MoreTabsPage");
+            return base.OnBackButtonPressed();
+        }
+
     }
 }

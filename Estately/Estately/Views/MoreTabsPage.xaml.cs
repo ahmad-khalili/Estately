@@ -19,17 +19,13 @@ namespace Estately.Views
         public void ItemClicked(object sender, EventArgs eventArgs)
         {
             var label = sender as Label;
-            if (label.Text == "Renovation Calculator")
+            if (label.Text == "Login")
             {
-                Shell.Current.Navigation.PushAsync(new RennovationPage());
+                Shell.Current.Navigation.PushAsync(new LoginPage());
             }
-            if (label.Text == "Profile Page")
+            else if (label.Text == "Registration")
             {
-                Shell.Current.Navigation.PushAsync(new ProfilePage());
-            }
-            if (label.Text == "Mortgage Calculator")
-            {
-                Shell.Current.Navigation.PushAsync(new MortgagePage());
+                Shell.Current.Navigation.PushAsync(new RegistrationPage());
             }
         }
     }

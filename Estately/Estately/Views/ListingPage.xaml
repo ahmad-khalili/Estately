@@ -25,7 +25,7 @@
                      WidthRequest="400"
                      HorizontalOptions="Center" />
                         </Frame>
-                        <Label Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold" FontAttributes="Bold" TextColor="#2E4053"/>
+                        <Label Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold" TextColor="#2E4053"/>
                        <Grid Grid.Row="1">
 
                             <Grid.RowDefinitions>

@@ -9,10 +9,8 @@
             <ListView x:Name="MoreList">
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type Label}">
-                        <Label Text="Profile Page"/>
-                        <Label Text="Digital Contract Creator"/>
-                        <Label Text="Renovation Calculator"/>
-                        <Label Text="Mortgage Calculator"/>
+                        <Label Text="Login"/>
+                        <Label Text="Registration"/>
                     </x:Array>
                 </ListView.ItemsSource>
                 <ListView.ItemTemplate>
