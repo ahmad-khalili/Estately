@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Estately.Views.MortgageResult"
              Shell.TabBarIsVisible="False"
-             BackgroundColor="LightGray">
+             Title="Mortage Results">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#e3f2fd">
              <Label Text="Estimated Value" 
-                HorizontalOptions="CenterAndExpand" FontSize="26" TextColor="Black" FontAttributes="Bold" Margin="20"/>
+                HorizontalOptions="CenterAndExpand" FontSize="26" TextColor="#2E4053" FontAttributes="Bold" Margin="20"/>
 
             <Label Text="Total Monthly Payment" 
-                HorizontalOptions="CenterAndExpand" FontSize="24" TextColor="Black" FontAttributes="Bold" Margin="0,40,0,0" />
-            <Label x:Name="Result" Text="House Price: " TextColor="Black" FontSize="24" HorizontalOptions="Center"/>
+                HorizontalOptions="CenterAndExpand" FontSize="24" TextColor="#2E4053" FontAttributes="Bold" Margin="0,40,0,0" />
+            <Label x:Name="Result" Text="House Price: " TextColor="#2E4053" FontSize="24" HorizontalOptions="Center"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -29,19 +29,20 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Label Grid.Row="0" Text="Deatils:" TextColor="Black" FontSize="22" FontAttributes="Bold" Margin="10,100,0,0"/>
+                <Label Grid.Row="0" Text="Deatils:" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" Margin="10,100,0,0"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Text="House Price: " TextColor="Black" FontSize="18" Margin="20,0,0,0"/>
-            <Label Grid.Row="1" Grid.Column="4" x:Name="HousePrice" TextColor="Black" FontSize="18" Margin="140,0,10,0" />
+                <Label Grid.Row="1" Grid.Column="0" Text="House Price: " TextColor="#2E4053" FontSize="18" Margin="20,0,0,0"/>
+                <Label Grid.Row="1" Grid.Column="4" x:Name="HousePrice" TextColor="#2E4053" FontSize="18" Margin="140,0,10,0" />
 
-            <Label Grid.Row="2" Grid.Column="0" Text="Interest Rate: " TextColor="Black" FontSize="18" Margin="20,0,0,0"/>
-            <Label Grid.Row="2" Grid.Column="4" x:Name="InterestRate" TextColor="Black" FontSize="18" Margin="140,0,10,0" />
 
-            <Label Grid.Row="3" Grid.Column="0" Text="DownPayment: " TextColor="Black" FontSize="18" Margin="20,0,0,0" />
-            <Label Grid.Row="3" Grid.Column="4" x:Name="DownPayment" TextColor="Black" FontSize="18" Margin="140,0,10,0" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Interest Rate: " TextColor="#2E4053" FontSize="18" Margin="20,0,0,0"/>
+                <Label Grid.Row="2" Grid.Column="4" x:Name="InterestRate" TextColor="#2E4053" FontSize="18" Margin="140,0,10,0" />
 
-            <Label Grid.Row="4" Grid.Column="0" Text="Loan Length: " TextColor="Black" FontSize="18" Margin="20,0,0,0"/>
-            <Label Grid.Row="4" Grid.Column="4" x:Name="LoanLength" TextColor="Black" FontSize="18" Margin="140,0,10,0" />
+                <Label Grid.Row="3" Grid.Column="0" Text="DownPayment: " TextColor="#2E4053" FontSize="18" Margin="20,0,0,0" />
+                <Label Grid.Row="3" Grid.Column="4" x:Name="DownPayment" TextColor="#2E4053" FontSize="18" Margin="140,0,10,0" />
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Loan Length: " TextColor="#2E4053" FontSize="18" Margin="20,0,0,0"/>
+                <Label Grid.Row="4" Grid.Column="4" x:Name="LoanLength" TextColor="#2E4053" FontSize="18" Margin="140,0,10,0" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>
