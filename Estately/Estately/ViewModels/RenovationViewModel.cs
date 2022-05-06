@@ -34,6 +34,22 @@ namespace Estately.ViewModels
                 await App.Current.MainPage.DisplayAlert("Alert", "PropartyValue is Empty!", "Ok");
 
             }
+            else if (string.IsNullOrEmpty(Room1))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Room1 is Empty!", "Ok");
+
+            }
+            else if (string.IsNullOrEmpty(Room2))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Room2 is Empty!", "Ok");
+
+            }
+            else if (string.IsNullOrEmpty(Room3))
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Room3 is Empty!", "Ok");
+
+
+            }
             else
             {
                 await App.Current.MainPage.Navigation.PushAsync(new RenovationResults(PropartySize, Room1, Room2, Room3));
