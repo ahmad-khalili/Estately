@@ -34,8 +34,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Label TextColor="Black" x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
-        <Label TextColor="Black" Text="{Binding Location}" HorizontalOptions="End" Padding="0,0,10,0" Grid.Column="1" Grid.Row="0" FontSize="15" FontAttributes="Bold"/>
-        <Label TextColor="Black" Text="{Binding Price, StringFormat='{0:n}$'}" Grid.Row="2" Grid.Column="0" FontSize="20" Padding="10,0,0,0" FontAttributes="Bold"/>
+        <Label TextColor="Black" x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+        <Label TextColor="Black" Text="{Binding Location}" Padding="10,0,0,0" Grid.Row="2" FontSize="15" FontAttributes="Bold"/>
+        <Label TextColor="Black" Text="{Binding Price, StringFormat='${0:n}'}" Grid.Row="1" Grid.Column="0" FontSize="20" Padding="10,0,0,0" FontAttributes="Bold"/>
     </Grid>
 </Grid>
