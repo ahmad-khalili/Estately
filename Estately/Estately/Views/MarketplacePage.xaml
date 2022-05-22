@@ -1,12 +1,100 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Estately.Views.MarketplacePage">
+             x:Class="Estately.Views.MarketplacePage"
+             xmlns:views="clr-namespace:Estately.Views"
+             Title="Marketplace">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddButtonCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid BackgroundColor="#e3f2fd" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" BackgroundColor="#e3f2fd" Margin="5,10,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+
+                <SearchBar SearchCommand="{Binding SearchCommand}" Text="{Binding Title}" TextColor="black"  PlaceholderColor="Gray" Placeholder="Search" Grid.Column="0" BackgroundColor="#e3f2fd"/>
+
+                <ImageButton Command="{Binding FilterButtonCommand}" Margin="5,0,0,0" Grid.Column="1" Padding="10,5,0,0" BackgroundColor="#e3f2fd">
+
+                    <ImageButton.Source>
+                        <FontImageSource FontFamily="MaterialIcons" Size="Large" Color="Black" Glyph="&#xe429;"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid HorizontalOptions="Center" Margin="0,5,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="SaleButton" Grid.Row="0" Grid.Column="0" Command="{Binding ForSaleCommand}"  CornerRadius="15" Text="For Sale" FontSize="14" FontAttributes="Bold" TextColor="White"  BackgroundColor="{Binding SaleColor}"/>
+                    <Button x:Name="RentButton" Grid.Row="0" Grid.Column="1" Command="{Binding ForRentCommand}"  CornerRadius="15" Text="For Rent" FontSize="14" FontAttributes="Bold" TextColor="White" BackgroundColor="{Binding RentColor}"/>
+                    <Button x:Name="AllButton" Grid.Row="0" Grid.Column="2" Command="{Binding AllCommand}"  CornerRadius="15" Text="All" FontAttributes="Bold" FontSize="14" TextColor="White" BackgroundColor= "{Binding AllColor}"/>
+
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="350"/>
+                            <RowDefinition Height="350"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="20,0,20,0" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions >
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Featuerd Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#e3f2fd"/>
+                            <CarouselView Loop="True" IndicatorView="indicatorViewFeatured" ItemsSource="{Binding FeaturedList}" Grid.Row="1">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <views:ListingComponent/>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                            <IndicatorView Grid.Row="1" x:Name="indicatorViewFeatured" IndicatorColor="LightGray" SelectedIndicatorColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="End"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="20,0,20,10" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Padding="0,0,0,5" Text="Nearby Properties" TextColor="#2E4053" FontSize="22" FontAttributes="Bold" BackgroundColor="#e3f2fd"/>
+                            <CarouselView Loop="True" IndicatorView="indicatorViewNearby" ItemsSource="{Binding NearbyList}" Grid.Row="1">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <views:ListingComponent/>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                            <IndicatorView Grid.Row="1" x:Name="indicatorViewNearby" IndicatorColor="LightGray" SelectedIndicatorColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="End"/>
+                        </Grid>
+                    </Grid>
+                </ScrollView>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Estately.Views.MoreTabsPage"
+             xmlns:models="clr-namespace:Estately.Models"
+             Title="More"
+             BackgroundColor="#e3f2fd">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="MoreList">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type Label}">
+                        <Label Text="Login"/>
+                        <Label Text="Registration"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Padding="10,0,0,0" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="{Binding Text}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped = "ItemClicked"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

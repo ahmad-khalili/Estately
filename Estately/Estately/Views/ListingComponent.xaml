@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Estately.Views.ListingComponent" BackgroundColor="White">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="100" />
+    </Grid.RowDefinitions>
+    <Frame Grid.Row="0" HasShadow="True"
+           BorderColor="White"
+           CornerRadius="5"
+           HeightRequest="200"
+           VerticalOptions="CenterAndExpand"
+           BackgroundColor="White">
+        <ImageButton Source="{Binding Image}"
+                     Aspect="Fill"
+                     HeightRequest="150"
+                     WidthRequest="400"
+                     HorizontalOptions="Center" />
+    </Frame>
+    <Label TextColor="{StaticResource Primary}" Text="{Binding Type, StringFormat='For {0:F2}'}" Padding="0,0,10,0" HorizontalTextAlignment="End" x:Name="TypeLabel" FontAttributes="Bold"/>
+    <Grid Grid.Row="1">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ItemClicked"/>
+        </Grid.GestureRecognizers>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Label TextColor="Black" x:Name="titleLabel" Text="{Binding Title}" Padding="10,0,0,0" Grid.Row="0" FontSize="20" FontAttributes="Bold"/>
+        <Label TextColor="Black" Text="{Binding Location}" Padding="10,0,0,0" Grid.Row="2" FontSize="15" FontAttributes="Bold"/>
+        <Label TextColor="Black" Text="{Binding Price, StringFormat='${0:n}'}" Grid.Row="1" Grid.Column="0" FontSize="20" Padding="10,0,0,0" FontAttributes="Bold"/>
+    </Grid>
+</Grid>

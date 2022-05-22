@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
+
+using Estately;
+using Estately.ViewModels;
+using Estately.Models;
 
 namespace Estately.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MarketplacePage : ContentPage
     {
         public MarketplacePage()
         {
             InitializeComponent();
+            BindingContext = new MarketplaceViewModel();
         }
     }
 }

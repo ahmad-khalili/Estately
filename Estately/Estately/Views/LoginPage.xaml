@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Estately.Views.LoginPage"
+             Title="Sign in">
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center" BackgroundColor="#e3f2fd">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout>
+                <Image Source="https://i.ibb.co/mD6vYkv/279042484-420430702781272-6838196675858232007-n.png"  HorizontalOptions="CenterAndExpand" HeightRequest="450" WidthRequest="1500" Margin="0,0,0,1000" />
+            </StackLayout>
+            <Label Text="Login" FontSize="Large" FontAttributes="Bold" Margin="50,370,0,0"  TextColor="Black"/>
+
+            <StackLayout Margin="50,420,30,10">
+                <Entry  x:Name="EmailEntry" Grid.Row="0" Text="{Binding Email}" Placeholder="Email"   Keyboard="Email" TextColor="Black"/>
+                <Entry   x:Name="PasswordEntry" Grid.Row="1" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
+            </StackLayout>
+
+            <Label Text="Don't Have an Account?" Margin="30,555,0,0" />
+            <Label Text="Register Now" TextColor="Blue" FontSize="Default" FontAttributes="Bold" Margin="180,555,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NoAccountCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <StackLayout  Margin="50,590,30,10" >
+                <Button   x:Name="LoginButton" Style="{StaticResource PrimaryButtonStyle}"  HorizontalOptions="Center"  Grid.Row="9"   Text="LOGIN"   HeightRequest="55" WidthRequest="250" Command="{Binding LoginCommand}" />
+            </StackLayout>
+
+
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
